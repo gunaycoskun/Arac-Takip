@@ -1,4 +1,4 @@
-﻿@*@model AracTakipSistemi.DAL.Concrete.tbl_Model
+﻿@model AracTakipSistemi.DAL.Concrete.tbl_Model
 @{
     ViewBag.Title = "GetModel";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,11 +18,11 @@
             <label class="input-group-text" for="inputGroupSelect01">Kapı Tipi</label>
         </div>
         <select class="custom-select" id="KapiSelect">
-            <option @(Model.KapiAD == "1" ? "selected" : "") value="1">1</option>
-            <option @(Model.KapiAD == "2" ? "selected" : "") value="2">2</option>
-            <option @(Model.KapiAD == "3" ? "selected" : "") value="3">4</option>
-            <option @(Model.KapiAD == "6" ? "selected" : "") value="6">6</option>
-            <option @(Model.KapiAD == "8" ? "selected" : "") value="8">8</option>
+            <option @(Model.KapiID == "1" ? "selected" : "") value="1">1</option>
+            <option @(Model.KapiID == "2" ? "selected" : "") value="2">2</option>
+            <option @(Model.KapiID == "3" ? "selected" : "") value="3">4</option>
+            <option @(Model.KapiID == "6" ? "selected" : "") value="6">6</option>
+            <option @(Model.KapiID == "8" ? "selected" : "") value="8">8</option>
         </select>
     </div>
     <div class="col-md-4">
@@ -30,53 +30,25 @@
             <label class="input-group-text" for="inputGroupSelect01">Kasa Tipi</label>
         </div>
         <select class="custom-select" id="KasaTip">
-            <option @(Model.KasaAD == "Minivan/Panelvan" ? "selected" : "") value="Minivan/Panelvan">Minivan / Panelvan</option>
-            <option @(Model.KasaAD == "Hatchback" ? "selected" : "") value="Hatchback">Hatchback</option>
-            <option @(Model.KasaAD == "StationWagon" ? "selected" : "") value="StationWagon">Station Wagon</option>
-            <option @(Model.KasaAD == "Sedan" ? "selected" : "") value="Sedan">Sedan</option>
-            <option @(Model.KasaAD == "Coupe" ? "selected" : "") value="Coupe">Coupe</option>
-            <option @(Model.KasaAD == "Cabrio" ? "selected" : "") value="Cabrio">Cabrio</option>
-            <option @(Model.KasaAD == "MPV" ? "selected" : "") value="MPV">MPV</option>
-            <option @(Model.KasaAD == "SUV" ? "selected" : "") value="SUV">SUV</option>
-            <option @(Model.KasaAD == "Kamyon" ? "selected" : "") value="Kamyon">Kamyon</option>
-            <option @(Model.KasaAD == "DamperliKamyon" ? "selected" : "") value="DamperliKamyon">Damperli Kamyon</option>
-            <option @(Model.KasaAD == "Minibüs" ? "selected" : "") value="Minibüs">Minibüs</option>
-            <option @(Model.KasaAD == "Midibüs" ? "selected" : "") value="Midibüs">Midibüs</option>
-            <option @(Model.KasaAD == "Tır" ? "selected" : "") value="Tır">Tır</option>
+            <option @(Model.KasaID == "Minivan/Panelvan" ? "selected" : "") value="Minivan/Panelvan">Minivan / Panelvan</option>
+            <option @(Model.KasaID == "Hatchback" ? "selected" : "") value="Hatchback">Hatchback</option>
+            <option @(Model.KasaID == "StationWagon" ? "selected" : "") value="StationWagon">Station Wagon</option>
+            <option @(Model.KasaID == "Sedan" ? "selected" : "") value="Sedan">Sedan</option>
+            <option @(Model.KasaID == "Coupe" ? "selected" : "") value="Coupe">Coupe</option>
+            <option @(Model.KasaID == "Cabrio" ? "selected" : "") value="Cabrio">Cabrio</option>
+            <option @(Model.KasaID == "MPV" ? "selected" : "") value="MPV">MPV</option>
+            <option @(Model.KasaID == "SUV" ? "selected" : "") value="SUV">SUV</option>
+            <option @(Model.KasaID == "Kamyon" ? "selected" : "") value="Kamyon">Kamyon</option>
+            <option @(Model.KasaID == "DamperliKamyon" ? "selected" : "") value="DamperliKamyon">Damperli Kamyon</option>
+            <option @(Model.KasaID == "Minibüs" ? "selected" : "") value="Minibüs">Minibüs</option>
+            <option @(Model.KasaID == "Midibüs" ? "selected" : "") value="Midibüs">Midibüs</option>
+            <option @(Model.KasaID == "Tır" ? "selected" : "") value="Tır">Tır</option>
         </select>
     </div>
 </div>
 
 <br />
-<div class="row">
-    <div class="col-md-4">
-        <label>Motor Beygir</label>
-        <input type="text" class="form-control" id="MotorBeygir" value="@Model.HP">
-    </div>
-    <div class="col-md-4">
-        <label>Motor CC</label>
-        <input type="text" class="form-control" id="MotorCC" value="@Model.CC">
-    </div>
-    <div class="col-md-4">
-        <label>Motor Silindir Sayısı</label>
-        <input type="text" class="form-control" id="Silindir" maxlength="3" value="@Model.Silindir">
-    </div>
-</div>
-<br />
-<div class="row">
-    <div class="col-md-4">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Yakıt Tipi</label>
-        </div>
-        <select class="form-control" id="YakitTip">
-            <option @(Model.YakitAD == "Benzin" ? "selected" : "") value="Benzin">Benzin</option>
-            <option @(Model.YakitAD == "Dizel" ? "selected" : "") value="Dizel">Dizel</option>
-            <option @(Model.YakitAD == "LPG" ? "selected" : "") value="LPG">LPG</option>
-            <option @(Model.YakitAD == "Elektrik" ? "selected" : "") value="Elektrik">Elektrik</option>
-        </select>
-    </div>
-    <br />
-</div>
+
 <input type="hidden" value="@Model._id" id="ModelD" />
 <button class="btn btn-secondary" onclick="UpdateModel()">Güncelle</button>
 <script>
@@ -112,4 +84,4 @@
 
         })
     }
-</script>*@
+</script>
