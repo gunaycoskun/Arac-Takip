@@ -68,20 +68,29 @@ namespace AracTakip.Controllers
         }
         public ActionResult GetModel(string id)
         {
+            var motor = unitOfWork.MotorTip.ToList();
             var model = unitOfWork.Model.Find(x => x._id == id);
-            return View("GetModel",model);
+            ModelAndMotors modelAndMotors = new ModelAndMotors
+            {
+                KapiID = model.KapiID,
+                KasaID = model.KasaID,
+                ModelAD = model.ModelAD,
+                VitesID = model.VitesID,
+                MotorID = model.MotorID,
+                _id = id,
+                motors=motor
+            };
+            return View("GetModel", modelAndMotors);
         }
         [Route("update-model")]
-        public ActionResult UpdateModel(string id,string YakitAD,string Silindir,string ModelAD,string KasaAD,string KapiAD,string HP,string CC)
+        public ActionResult UpdateModel(string id, string ModelAD, string KapiSelect, string KasaSelect, string Vites, string Motor)
         {
             var model=unitOfWork.Model.Find(x => x._id == id);
-            //model.YakitAD = YakitAD;
-            //model.Silindir = Silindir;
-            //model.ModelAD = ModelAD;
-            //model.KasaAD = KasaAD;
-            //model.KapiAD = KapiAD;
-            //model.HP = HP;
-            //model.CC = CC;
+            model.VitesID = Vites;
+            model.MotorID = Motor;
+            model.ModelAD = ModelAD;
+            model.KasaID = KasaSelect;
+            model.KapiID = KapiSelect;
             unitOfWork.Model.Update(model);
             unitOfWork.Save();
             return RedirectToAction("Model");

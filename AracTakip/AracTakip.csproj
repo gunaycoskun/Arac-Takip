@@ -126,15 +126,17 @@
     <Compile Include="Controllers\CihazController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KullanicilarController.cs" />
+    <Compile Include="Controllers\MarkaController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\MotorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Araclar.cs" />
+    <Compile Include="Models\MarkaAndModels.cs" />
+    <Compile Include="Models\ModelAndMotors.cs" />
     <Compile Include="Models\Modeller.cs" />
     <Compile Include="Models\Motorlar.cs" />
-    <Compile Include="Models\TümMotorlar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -775,6 +777,8 @@
     <Content Include="Views\Kullanicilar\CreateUser.cshtml" />
     <Content Include="Views\Kullanicilar\Kullanicilar.cshtml" />
     <Content Include="Views\Kullanicilar\GetKullanicilar.cshtml" />
+    <Content Include="Views\Marka\Marka.cshtml" />
+    <Content Include="Views\Marka\CreateMarka.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

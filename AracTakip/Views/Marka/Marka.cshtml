@@ -1,0 +1,30 @@
+﻿@model List<AracTakip.Models.MarkaAndModels>
+@{
+    ViewBag.Title = "Marka";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Marka</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Marka AD</th>
+            <th scope="col">Model AD</th>
+            <th scope="col">Sil</th>
+            <th scope="col">Güncelle</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">@item.MarkaAD</td>
+                <td scope="row">@item.ModelAD</td>
+                <td><a href="/Cihaz/DeleteCihaz/@item.id" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Cihaz/GetCihaz/@item.id" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
