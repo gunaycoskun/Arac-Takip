@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "CreateCihaz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Cihaz Oluşturma Sayfası</h2>
+
+    <div class="row" style="margin-top:20px;">
+       
+            <div class="col-md-4">
+                <label>Cihaz Adı</label>
+                <input type="text" id="cihaz-ad" class="form-control" maxlength="50"/>
+            </div>
+            <div class="col-md-4">
+                <label>Cihaz IP</label>
+                <input type="text" id="cihaz-ip" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label>Cihaz Port</label>
+                <input type="text" id="cihaz-port" class="form-control" maxlength="3"/>
+            </div>
+
+            <input style="margin-top:25px;margin-left:15px;" class="btn btn-success" type="button" onclick="CreateCihaz()" value="Cihaz Oluştur" />
+      
+       
+    </div>
+
+
+    <script>
+
+        function CreateCihaz() {
+            var cihazAd = $("#cihaz-ad").val();
+            var cihazIP = $("#cihaz-ip").val();
+            var cihazPort = $("#cihaz-port").val();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "create-cihaz-post",
+                data: { CihazAd: cihazAd, CihazIP: cihazIP, CihazPort:cihazPort },
+                success: function (deger) {
+
+                    window.location.replace("/get-all-cihaz");
+                }
+                
+            });
+        }
+    </script>
+

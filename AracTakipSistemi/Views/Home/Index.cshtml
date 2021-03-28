@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="~/Assest/Ajax/Ajax.js"></script>
+<style>
+    span {
+        position: absolute;
+        padding-top: 700px;
+        padding-left: 20px;
+        line-height: 40px;
+        font-size: 30px;
+    }
+
+    .btn {
+        margin-top: 15px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <img style="width:80%; height:100%;" src="~/Assest/img/aractakipgif.gif" />
+        <span>
+            <label>Kullanıcı Adı</label><br />
+            <input id="txtKullanici" type="text" /><br />
+            <label>Şifre</label><br />
+            <input id="txtSifre" type="text" /><br />
+            <input id="btn-giris" class="btn btn-success" type="submit" value="Giriş" onclick="giris()" />
+        </span>
+    </div>
+</div>
+<script>
+    function giris() {
+        var KullaniciAd = $("#txtKullanici").val();
+        var Sifre = $("#txtSifre").val();
+        $.ajax({
+            url: "/ajax-login",
+            data: { KullaniciAd: KullaniciAd, Sifre: Sifre },
+            dataType: "application/json",
+            type: "POST",
+            beforeSend: function () {
+                $("#btn-giris").html("Lütfen bekeleyiniz");
+                $("#btn-giris").prop("disabled", true);
+                $("#btn-giris").attr("class", "btn btn-danger");
+            },
+            success: function () {
+
+            }
+
+        });
+    }
+</script>

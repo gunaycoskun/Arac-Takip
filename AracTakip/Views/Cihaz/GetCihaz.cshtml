@@ -1,0 +1,28 @@
+﻿@model AracTakipSistemi.DAL.Concrete.tbl_Cihaz
+@{
+    ViewBag.Title = "GetCihaz";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Cihaz Güncelleme</h2>
+
+
+
+@using (Html.BeginForm("UpdateCihaz", "Cihaz", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Cihaz Ad</label>
+        @Html.TextBoxFor(x => x.CihazAd, new { @class = "form-control" })
+        <label>Cihaz IP</label>
+        @Html.TextBoxFor(x => x.CihazIP, new { @class = "form-control" })
+        <label>Cihaz Port</label>
+        @Html.TextBoxFor(x => x.CihazPort, new { @class = "form-control" })
+        @Html.HiddenFor(x => x._id)
+    </div>
+    <button class="btn btn-secondary">Güncelle</button>
+}
+
+
+
+
+

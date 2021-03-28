@@ -1,0 +1,41 @@
+﻿@model List<AracTakipSistemi.DAL.Concrete.tbl_Arac>
+@{
+    ViewBag.Title = "Araclar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Araçlar</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Plaka</th>
+            <th scope="col">Şasi Numarası</th>
+            <th scope="col">Renk</th>
+            <th scope="col">Yıl</th>
+            <th scope="col">Marka</th>
+            <th scope="col">Model</th>
+            <th scope="col">Cihaz ID</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td scope="row">@item.Plaka</td>
+            <td scope="row">@item.SasiNo</td>
+            <td scope="row">@item.Renk</td>
+            <td scope="row">@item.Yil</td>
+            <td scope="row">@item.MarkaID</td>
+            <td scope="row">@item.ModelID</td>
+            <td scope="row">@item.CihazID</td>
+            <td><a href="/Arac/DeleteArac/@item._id" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Arac/GetArac/@item._id" class="btn btn-warning">Güncelle</a></td>
+        </tr>
+        }
+
+    </tbody>
+
+

@@ -1,0 +1,37 @@
+﻿@model List<AracTakip.Models.Motorlar>
+@{
+    ViewBag.Title = "Motor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Motor</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Motor ADI</th>
+            <th scope="col">Beygir</th>
+            <th scope="col">CC</th>
+            <th scope="col">Silindir Sayısı</th>
+            <th scope="col">Yakıt</th>
+            <th scope="col">Sil</th>
+            <th scope="col">Güncelleme</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">@item.Adi</td>
+                <td scope="row">@item.Beygir</td>
+                <td scope="row">@item.CC</td>
+                <td scope="row">@item.Silindir</td>
+                <td scope="row">@item.YakitAD</td>
+                <td><a href="/Motor/DeleteMotor/@item._id" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Motor/GetMotor/@item._id" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>

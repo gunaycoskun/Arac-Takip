@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "CreateMotor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateMotor</h2>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <label>Motor AD</label>
+        <input type="text" class="form-control" id="MotorAD">
+    </div>
+    <div class="col-md-4">
+        <label>Motor CC</label>
+        <input type="text" class="form-control" id="MotorCC">
+    </div>
+    <div class="col-md-4">
+        <label>Motor Silindir Sayısı</label>
+        <input type="text" class="form-control" id="Silindir">
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <label>Motor Beygir</label>
+        <input type="text" class="form-control" id="MotorBeygir">
+    </div>
+    <div class="col-md-6">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Kapı Tipi</label>
+        </div>
+        <select class="custom-select" id="Yakit">
+            <option selected>Lütfen Yakıt Tipini Seçiniz</option>
+            <option value="1">Benzin</option>
+            <option value="2">Dizel</option>
+            <option value="3">LPG/Benzin</option>
+            <option value="4">Elektrikli</option>
+        </select>
+    </div>
+</div>
+<br />
+<div class="row">
+    <input style="margin-left:16px;" class="btn btn-success" value="Motor Kayıt" onclick="saveMotor()"/>
+</div>
+<script>
+    function saveMotor() {
+        var Yakit = $("#Yakit").val();
+        var Silindir = $("#Silindir").val();
+        var MotorAD = $("#MotorAD").val();
+        var MotorBeygir = $("#MotorBeygir").val();
+        var MotorCC = $("#MotorCC").val();
+        $.ajax({
+            url: "save-motor",
+            dataType: "json",
+            type: "POST",
+            data: { MotorAD: MotorAD, MotorBeygir: MotorBeygir, MotorCC: MotorCC, Silindir: Silindir, Yakit: Yakit },
+            success: function (value) {
+                if (value == 0) {
+                    window.location.replace("/get-all-motor");
+                }
+                else {
+                    Command: toastr["error"]("Hata Oluştu Lütfen Değerleri Kontrol Ediniz.")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+
+            }
+        })
+    }
+</script>

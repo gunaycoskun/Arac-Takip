@@ -1,0 +1,115 @@
+﻿@*@model AracTakipSistemi.DAL.Concrete.tbl_Model
+@{
+    ViewBag.Title = "GetModel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetModel</h2>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <label>Model ADI</label>
+        <input type="text" class="form-control" id="ModelAD" value="@Model.ModelAD">
+    </div>
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Kapı Tipi</label>
+        </div>
+        <select class="custom-select" id="KapiSelect">
+            <option @(Model.KapiAD == "1" ? "selected" : "") value="1">1</option>
+            <option @(Model.KapiAD == "2" ? "selected" : "") value="2">2</option>
+            <option @(Model.KapiAD == "3" ? "selected" : "") value="3">4</option>
+            <option @(Model.KapiAD == "6" ? "selected" : "") value="6">6</option>
+            <option @(Model.KapiAD == "8" ? "selected" : "") value="8">8</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Kasa Tipi</label>
+        </div>
+        <select class="custom-select" id="KasaTip">
+            <option @(Model.KasaAD == "Minivan/Panelvan" ? "selected" : "") value="Minivan/Panelvan">Minivan / Panelvan</option>
+            <option @(Model.KasaAD == "Hatchback" ? "selected" : "") value="Hatchback">Hatchback</option>
+            <option @(Model.KasaAD == "StationWagon" ? "selected" : "") value="StationWagon">Station Wagon</option>
+            <option @(Model.KasaAD == "Sedan" ? "selected" : "") value="Sedan">Sedan</option>
+            <option @(Model.KasaAD == "Coupe" ? "selected" : "") value="Coupe">Coupe</option>
+            <option @(Model.KasaAD == "Cabrio" ? "selected" : "") value="Cabrio">Cabrio</option>
+            <option @(Model.KasaAD == "MPV" ? "selected" : "") value="MPV">MPV</option>
+            <option @(Model.KasaAD == "SUV" ? "selected" : "") value="SUV">SUV</option>
+            <option @(Model.KasaAD == "Kamyon" ? "selected" : "") value="Kamyon">Kamyon</option>
+            <option @(Model.KasaAD == "DamperliKamyon" ? "selected" : "") value="DamperliKamyon">Damperli Kamyon</option>
+            <option @(Model.KasaAD == "Minibüs" ? "selected" : "") value="Minibüs">Minibüs</option>
+            <option @(Model.KasaAD == "Midibüs" ? "selected" : "") value="Midibüs">Midibüs</option>
+            <option @(Model.KasaAD == "Tır" ? "selected" : "") value="Tır">Tır</option>
+        </select>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <label>Motor Beygir</label>
+        <input type="text" class="form-control" id="MotorBeygir" value="@Model.HP">
+    </div>
+    <div class="col-md-4">
+        <label>Motor CC</label>
+        <input type="text" class="form-control" id="MotorCC" value="@Model.CC">
+    </div>
+    <div class="col-md-4">
+        <label>Motor Silindir Sayısı</label>
+        <input type="text" class="form-control" id="Silindir" maxlength="3" value="@Model.Silindir">
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Yakıt Tipi</label>
+        </div>
+        <select class="form-control" id="YakitTip">
+            <option @(Model.YakitAD == "Benzin" ? "selected" : "") value="Benzin">Benzin</option>
+            <option @(Model.YakitAD == "Dizel" ? "selected" : "") value="Dizel">Dizel</option>
+            <option @(Model.YakitAD == "LPG" ? "selected" : "") value="LPG">LPG</option>
+            <option @(Model.YakitAD == "Elektrik" ? "selected" : "") value="Elektrik">Elektrik</option>
+        </select>
+    </div>
+    <br />
+</div>
+<input type="hidden" value="@Model._id" id="ModelD" />
+<button class="btn btn-secondary" onclick="UpdateModel()">Güncelle</button>
+<script>
+    function UpdateModel() {
+        var id = $("#ModelD").val();
+        var YakitAD = $("#YakitTip").val();
+        var Silindir = $("#Silindir").val();
+        var ModelAD = $("#ModelAD").val();
+        var KasaAD = $("#KasaTip").val();
+        var KapiAD = $("#KapiSelect").val();
+        var HP = $("#MotorBeygir").val();
+        var CC = $("#MotorCC").val();
+        $.ajax({
+            url: "/update-model",
+            dataType: "json",
+            type: "POST",
+            data: {
+                id: id,
+                YakitAD: YakitAD,
+                Silindir: Silindir,
+                ModelAD: ModelAD,
+                KasaAD: KasaAD,
+                KapiAD: KapiAD,
+                HP: HP,
+                CC: CC
+            },
+            success: function () {
+                window.location.assign("/get-all-model");
+            }
+
+
+
+
+        })
+    }
+</script>*@

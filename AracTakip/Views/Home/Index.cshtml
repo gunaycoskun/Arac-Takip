@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = null;
+}
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <form>
+        <div class="form-group">
+            <div class="row" style="text-align:center;">
+                <img style="height:80%;" src="~/Folder/img/aractakipgif.gif" />
+            </div>
+            <div class="row" style="text-align:center;">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" id="girisPaneli" style="line-height: 2;">
+                    <label>Kullanıcı Adı</label><br />
+                    <input type="text" id="txtKullanici" class="form-control" />
+                    <label>Parola</label>
+                    <input type="password" id="txtParola" class="form-control" />
+                    <br />
+                    <input class="btn btn-success" value="Giriş" onclick="Giris()" />
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </form>
+
+    <script>
+
+
+        function Giris() {
+            var kullanici = $("#txtKullanici").val();
+            var parola = $("#txtParola").val();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "PAnelGiris",
+                data: { Kullanici: kullanici, Parola: parola },
+                success: function (data) {
+                    window.location.replace("/get-all-cihaz");
+                }
+
+            });
+        }
+
+    </script>
+</body>
+</html>

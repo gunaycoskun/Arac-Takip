@@ -1,0 +1,61 @@
+﻿@model AracTakipSistemi.DAL.Concrete.tbl_MotorTip
+@{
+    ViewBag.Title = "GetMotor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetMotor</h2>
+<div class="row">
+    <div class="col-md-4">
+        <label>Motor Beygir</label>
+        <input type="text" class="form-control" id="MotorAD" value="@Model.MotorAD">
+    </div>
+    <div class="col-md-4">
+        <label>Motor Beygir</label>
+        <input type="text" class="form-control" id="MotorBeygir" value="@Model.MotorBeygir">
+    </div>
+    <div class="col-md-4">
+        <label>Motor CC</label>
+        <input type="text" class="form-control" id="MotorCC" value="@Model.MotorCC">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Yakıt Tipi</label>
+        </div>
+        <select class="form-control" id="YakitTip">
+            <option @(Model.YakitID == "1" ? "selected" : "") value="1">Benzin</option>
+            <option @(Model.YakitID == "2" ? "selected" : "") value="2">Dizel</option>
+            <option @(Model.YakitID == "3" ? "selected" : "") value="3">LPG/Benzin</option>
+            <option @(Model.YakitID == "4" ? "selected" : "") value="4">Elektrik</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label>Motor Silindir Sayısı</label>
+        <input type="text" class="form-control" id="Silindir" maxlength="3" value="@Model.Silindir">
+    </div>
+</div>
+<div>
+    <input class="btn btn-success" value="Motoru Güncelle" onclick="UpdateMotor()" />
+</div>
+<script>
+    function UpdateMotor() {
+        var Yakit = $("#YakitTip").val();
+        var Silindir = $("#Silindir").val();
+        var MotorAD = $("#MotorAD").val();
+        var MotorBeygir = $("#MotorBeygir").val();
+        var MotorCC = $("#MotorCC").val();
+        var id = '@Model._id';
+        $.ajax({
+            url: "/update-motor",
+            dataType: "json",
+            type: "POST",
+            data: { MotorAD: MotorAD, MotorBeygir: MotorBeygir, MotorCC: MotorCC, Silindir: Silindir, Yakit: Yakit, id: id },
+            success: function () {
+                window.location.replace("get-all-motor")
+            }
+        });
+
+    }
+</script>

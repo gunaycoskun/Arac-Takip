@@ -1,0 +1,127 @@
+﻿@model List<AracTakipSistemi.DAL.Concrete.tbl_MotorTip>
+@{
+    ViewBag.Title = "CreateModel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Model Oluştur</h2>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <label>Model ADI</label>
+        <input type="text" class="form-control" id="ModelAD">
+    </div>
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Kapı Tipi</label>
+        </div>
+        <select class="custom-select" id="KapiSelect">
+            <option selected>Lütfen Kapı Tipini Seçiniz</option>
+            <option value="1">Tek Kapı</option>
+            <option value="2">Standart</option>
+            <option value="3">6 Kapılı</option>
+            <option value="4">8 Kapılı</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Kasa Tipi</label>
+        </div>
+        <select class="custom-select" id="KasaTip">
+            <option selected>Lütfen Kasa Tipini Seçiniz</option>
+            <option value="1">Minivan / Panelvan</option>
+            <option value="2">Hatchback</option>
+            <option value="3">Station Wagon</option>
+            <option value="4">Sedan</option>
+            <option value="5">Coupe</option>
+            <option value="6">Cabrio</option>
+            <option value="7">MPV</option>
+            <option value="8">SUV</option>
+            <option value="9">Kamyon</option>
+            <option value="10">Damperli Kamyon</option>
+            <option value="11">Minibüs</option>
+            <option value="12">Midibüs</option>
+            <option value="13">Tır</option>
+        </select>
+    </div>
+</div>
+
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Vites Türü</label>
+        </div>
+        <select class="custom-select" id="VitesTip">
+            <option selected>Vites Türünü Seçiniz</option>
+            <option value="1">Manuel 5 Vites</option>
+            <option value="2">Manuel 6 Vites</option>
+            <option value="3">Manuel 8 Vites</option>
+            <option value="4">Manuel 12 Vites</option>
+            <option value="5">Otomatik 5 Vites</option>
+            <option value="6">Otomatik 6 Vites</option>
+            <option value="7">Otomatik 8 Vites</option>
+            <option value="8">Otomatik 12 Vites</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Motor Türü</label>
+        </div>
+        <select class="custom-select" id="MotorTip">
+            <option selected>Motor Türünü Seçiniz</option>
+            @foreach (var motor in Model.OrderBy(x => x.MotorAD))
+            {
+
+                <option value="@motor._id"> @motor.MotorAD - @motor.MotorBeygir HP - @motor.MotorCC CC</option>
+            }
+
+        </select>
+    </div>
+    <br />
+    <button type="button" style="height:10%; margin-top:38px;" class="btn btn-success" onclick="ModelKaydet()">Modeli Kaydet</button>
+</div>
+<br />
+
+
+<script>
+    function ModelKaydet() {
+        var ModelAD = $("#ModelAD").val();
+        var KapiSelect = $("#KapiSelect").val();
+        var KasaSelect = $("#KasaTip").val();
+        var Vites = $("#VitesTip").val();
+        var Motor = $("#MotorTip").val();
+
+
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/save-model",
+            data: { ModelAD: ModelAD, KapiSelect: KapiSelect, KasaSelect: KasaSelect, Vites: Vites, Motor: Motor },
+            success: function () {
+                Command: toastr["success"]("Model ekleme işlemi başarılı", "Model Ekleme")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "5000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                window.location.replace("/get-all-cihaz");
+            }
+        })
+    }
+    
+</script>
+

@@ -1,0 +1,112 @@
+﻿@model AracTakipSistemi.DAL.Concrete.tbl_Users
+@{
+    ViewBag.Title = "GetKullanicilar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>GetKullanicilar</h2>
+
+<div class="row" style="margin-top:20px;">
+
+    <div class="col-md-4">
+        <label>Kullanıcı Adı</label>
+        <input type="text" id="kullanici-ad" class="form-control" maxlength="50" value='@Model.KullaniciAdi'/>
+    </div>
+    <div class="col-md-4">
+        <label>Kullanıcı Şifre</label>
+        <input type="text" id="kullanici-pass" class="form-control" value='@Model.Parola'/>
+    </div>
+    <div class="col-md-4">
+        <label>Şifre Doğrulama</label>
+        <input type="text" id="kullanici-pass2" class="form-control" />
+    </div>
+
+    <input style="margin-top:25px;margin-left:15px;" class="btn btn-success" type="button" onclick="UpdateUsers()" value="Kullanıcıyı Güncelle" />
+
+
+</div>
+<script>
+
+    function UpdateUsers() {
+
+        var ad = $("#kullanici-ad").val();
+        var pass = $("#kullanici-pass").val();
+        var pass2 = $("#kullanici-pass2").val();
+        if (pass != pass2) {
+            Command: toastr["error"]("Şifre Doğrulama Hatalı", "Doğrulama")
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        }
+        else if (ad == "" || pass == "" || pass2 == "") {
+            Command: toastr["warning"]("Lütfen Boş Alan Bırakmayınız.", "Boş Alan")
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+        }
+        else {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/update-kullanici",
+                data: { Ad: ad, Password: pass, id: '@Model._id' },
+                success: function (deger) {
+
+                    Command: toastr["success"]("Güncelleme İşlemi Başarılı.", "Güncelleme İşlemi")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": true,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "3000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    window.location.reload()
+                    
+                }
+
+            });
+        }
+
+    }
+</script>
