@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="Models\Araclar.cs" />
     <Compile Include="Models\MarkaAndModels.cs" />
+    <Compile Include="Models\MarkaModel.cs" />
     <Compile Include="Models\ModelAndMotors.cs" />
     <Compile Include="Models\Modeller.cs" />
     <Compile Include="Models\Motorlar.cs" />
@@ -779,6 +780,7 @@
     <Content Include="Views\Kullanicilar\GetKullanicilar.cshtml" />
     <Content Include="Views\Marka\Marka.cshtml" />
     <Content Include="Views\Marka\CreateMarka.cshtml" />
+    <Content Include="Views\Marka\GetMarka.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

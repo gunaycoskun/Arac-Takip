@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AracTakipSistemi.Repository
 {
-    public interface IUsers:IRepository<tbl_Users>
+    public interface IKullanicilar : IRepository<tbl_Kullanicilar>
     {
     }
 }

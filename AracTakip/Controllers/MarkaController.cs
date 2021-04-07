@@ -46,5 +46,36 @@ namespace AracTakip.Controllers
             unitOfWork.Save();
             return View();
         }
+        public ActionResult DeleteMarka(string id)
+        {
+            var marka = unitOfWork.Marka.Find(x => x._id == id);
+            unitOfWork.Marka.Delete(marka);
+            return RedirectToAction("Marka");
+        }
+        public ActionResult GetMarka(string id)
+        {
+            var models=unitOfWork.Model.ToList();
+            var marka = unitOfWork.Marka.Find(x => x._id == id);
+            MarkaModel all = new MarkaModel{
+                MarkaAD = marka.MarkaAD,
+                _id=id,
+                ModelID=marka.ModelID,
+                models = models
+
+            };
+                 
+            return View("GetMarka", all);
+        }
+        [HttpPost]
+        [Route("edit-marka")]
+        public ActionResult EditMarka(string id,string MarkaAD,string ModelID)
+        {
+            var marka = unitOfWork.Marka.Find(x=>x._id == id);
+            marka.MarkaAD = MarkaAD;
+            marka.ModelID = ModelID;
+            unitOfWork.Marka.Update(marka);
+            unitOfWork.Save();
+            return View();
+        }
     }
 }

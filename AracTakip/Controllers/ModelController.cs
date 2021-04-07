@@ -61,7 +61,7 @@ namespace AracTakip.Controllers
         }
         public ActionResult DeleteModel(string id)
         {
-           var value= unitOfWork.Model.Find(x => x._id==id);
+           var value= unitOfWork.Model.Find(x => x._id == id);
             unitOfWork.Model.Delete(value);
             unitOfWork.Save();
             return RedirectToAction("Model");

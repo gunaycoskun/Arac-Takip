@@ -10,26 +10,26 @@ namespace Eselfware.Repository.UnitOfWork
     {
         private bool disposed = false;
 
-       public IUsers Users { get; }
-       public IArac Arac { get; }
-       public ICihaz Cihaz { get; }
-       public IKapiTip KapiTip { get; }
-       public IKasaTip KasaTip { get; }
-       public IMarka Marka { get; }
-       public IModel Model { get; }
-       public IMotorTip MotorTip { get; }
-       public IMusteri Musteri { get; }
-       public IYakitTip YakitTip { get; }
+        public IKullanicilar Kullanici { get; }
+        public IArac Arac { get; }
+        public ICihaz Cihaz { get; }
+        public IKapiTip KapiTip { get; }
+        public IKasaTip KasaTip { get; }
+        public IMarka Marka { get; }
+        public IModel Model { get; }
+        public IMotorTip MotorTip { get; }
+        public IMusteri Musteri { get; }
+        public IYakitTip YakitTip { get; }
         public IVites Vites { get; }
 
 
-        private readonly IMongoContext _mongoContext; 
+        private readonly IMongoContext _mongoContext;
 
         public UnitOfWork()
         {
-             
-                _mongoContext = new MongoContext();
-                Users = new UsersRepository(_mongoContext);
+
+            _mongoContext = new MongoContext();
+            Kullanici = new KullanicilarRepository(_mongoContext);
             Arac = new AracRepository(_mongoContext);
             Cihaz = new CihazRepository(_mongoContext);
             KapiTip = new KapiTipRepository(_mongoContext);
@@ -46,9 +46,9 @@ namespace Eselfware.Repository.UnitOfWork
 
         public void Dispose()
         {
-             
-                _mongoContext.Dispose();
-            
+
+            _mongoContext.Dispose();
+
         }
 
         public int Save()

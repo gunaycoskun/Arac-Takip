@@ -21,6 +21,6 @@ namespace AracTakipSistemi.DAL.Concrete
         public string MusteriAdSoyad { get; set; }
         public string MusteriTel { get; set; }
         public string MusteriEMail { get; set; }
-        public string AracID { get; set; }
+
     }
 }

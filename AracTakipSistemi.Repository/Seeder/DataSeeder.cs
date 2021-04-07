@@ -13,6 +13,15 @@ namespace AracTakipSistemi.Repository.Seeder
         [Obsolete]
         public static void Seed(IUnitOfWork _unitOfWork)
         {
+            if (_unitOfWork.Kullanici.FirstOrDefault()==null)
+            {
+                _unitOfWork.Kullanici.Add(new tbl_Kullanicilar
+                {
+                    KullaniciAdi = "admin",
+                    Parola = "43314",
+                    OlusturulmaTarihi = DateTime.Now
+                });
+            }
             if (_unitOfWork.YakitTip.FirstOrDefault() == null)
             {
                 _unitOfWork.YakitTip.Add(new tbl_YakitTip
@@ -138,7 +147,7 @@ namespace AracTakipSistemi.Repository.Seeder
             if (_unitOfWork.Vites.FirstOrDefault() == null) {
                 _unitOfWork.Vites.Add(new tbl_Vites
                 {
-                    _id="1",
+                    _id = "1",
                     VitesAD="Manuel",
                     VitesSayisi="5"
                 });

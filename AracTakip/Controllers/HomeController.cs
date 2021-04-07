@@ -38,7 +38,7 @@ namespace AracTakip.Controllers
        public ActionResult AdminPanel(string Kullanici, string Parola)
         {
             var deger = "1";
-            if (!_unitOfWork.Users.Any(x => x.KullaniciAdi == Kullanici && x.Parola == Parola))
+            if (!_unitOfWork.Kullanici.Any(x => x.KullaniciAdi == Kullanici && x.Parola == Parola))
             {
                 DataSeeder.Seed(_unitOfWork);
                 return Json(deger);

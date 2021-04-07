@@ -9,7 +9,7 @@ namespace Eselfware.Repository.UnitOfWork
        
         object Entity<T>();
 
-        IUsers Users { get; }
+        IKullanicilar Kullanici { get; }
         IArac Arac { get; }
         ICihaz Cihaz { get; }
         IKapiTip KapiTip { get; }

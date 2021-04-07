@@ -16,9 +16,11 @@ namespace AracTakipSistemi.DAL.Concrete
         [Key]
         [BsonId]
         [BsonRepresentation(BsonType.String)]
-        public string _id { get; set; } = ObjectId.GenerateNewId().ToString();
+        public string _id { get; set; }
         public string CihazAd { get; set; }
         public string CihazIP { get; set; }
         public string CihazPort { get; set; }
+        public decimal XKonum { get; set; }
+        public decimal YKonum { get; set; }
     }
 }

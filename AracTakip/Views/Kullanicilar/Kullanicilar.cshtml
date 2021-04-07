@@ -1,10 +1,10 @@
-﻿@model List<AracTakipSistemi.DAL.Concrete.tbl_Users>
+﻿@model List<AracTakipSistemi.DAL.Concrete.tbl_Kullanicilar>
 @{
     ViewBag.Title = "Kullanicilar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h2>Kullanicilar</h2>
+<h2>Kullanıcılar Listesi</h2>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -20,7 +20,7 @@
         {
             <tr>
                 <td scope="row">@item.KullaniciAdi</td>
-                <td scope="row">@item.CreatedDate.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                <td scope="row">@item.OlusturulmaTarihi.ToString("dd/MM/yyyy HH:mm:ss")</td>
                 <td><a href="/Kullanicilar/DeleteKullanicilar/@item._id" class="btn btn-danger">Sil</a></td>
                 <td><a href="/Kullanicilar/GetKullanicilar/@item._id" class="btn btn-warning">Güncelle</a></td>
             </tr>

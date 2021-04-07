@@ -23,6 +23,6 @@ namespace AracTakipSistemi.DAL.Concrete
         public string Yil { get; set; }
         public string MarkaID { get; set; }
         public string ModelID { get; set; }
-        public string CihazID { get; set; }
+        public string MusteriID { get; set; }
     }
 }

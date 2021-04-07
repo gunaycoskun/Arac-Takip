@@ -1,0 +1,56 @@
+﻿@model AracTakip.Models.MarkaModel
+@{
+    ViewBag.Title = "GetMarka";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateMarka</h2>
+<br />
+<div class="row">
+
+    <div class="col-md-4">
+        <label>Marka ADI</label>
+        <input type="text" class="form-control" id="MarkaAD" value="@Model.MarkaAD">
+    </div>
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Model Türü</label>
+        </div>
+        <select class="custom-select" id="ModelTipi">
+            <option selected>Model Seçiniz</option>
+            @foreach (var item in Model.models.OrderBy(x => x.ModelAD))
+            {
+
+                <option @(Model.ModelID == item._id ? "selected" : " ") value=@item._id> @item.ModelAD</option>
+            }
+
+        </select>
+    </div>
+    <input class="btn btn-success" value="Markayı Güncelle" onclick="UpdateMarka()" />
+</div>
+
+
+<script type="text/javascript">
+
+    function UpdateMarka() {
+        alert("test");
+
+        
+        var ad = $("#MarkaAD").val();
+        var model = $("#ModelTipi").val();
+        $.ajax({
+            url: "/edit-marka",
+            dataType: "json",
+            type: "POST",
+            data: { id:'@Model._id', MarkaAD: ad, ModelID: model },
+            success: function () {
+
+            }
+        });
+
+
+    }
+</script>
+
+
+
