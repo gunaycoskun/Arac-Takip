@@ -95,7 +95,7 @@ namespace AracTakip.Controllers
         [Route("update-motor")]
         public ActionResult UpdateMotor(string MotorAD, string MotorBeygir, string MotorCC, string Silindir, string Yakit,string id)
         {
-            var motor=unitOfWork.MotorTip.Find(x=>x._id==id);
+            var motor=unitOfWork.MotorTip.Find(x=>x._id == id);
             motor.MotorAD = MotorAD;
             motor.MotorBeygir = MotorBeygir;
             motor.MotorCC = MotorCC;

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace AracTakipSistemi.Repository.Repositories
 {
-    public class UsersRepository : MongoRepository<tbl_Users>, IUsers
+    public class KullanicilarRepository : MongoRepository<tbl_Kullanicilar>, IKullanicilar
     {
-        public UsersRepository(IMongoContext context) : base(context)
+        public KullanicilarRepository(IMongoContext context) : base(context)
         {
 
         }

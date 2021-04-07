@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace AracTakipSistemi.DAL.Concrete
 {
     [Table("tbl_Users")]
-    public class tbl_Users
+    public class tbl_Kullanicilar
     {
         [Key]
         [BsonId]
@@ -20,7 +20,7 @@ namespace AracTakipSistemi.DAL.Concrete
         public string KullaniciAdi { get; set; }
         public string Parola { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime CreatedDate { get; set; }
+        public DateTime OlusturulmaTarihi { get; set; }
     }
 
 }

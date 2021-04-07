@@ -116,7 +116,7 @@
     <Compile Include="Concrete\tbl_Model.cs" />
     <Compile Include="Concrete\tbl_MotorTip.cs" />
     <Compile Include="Concrete\tbl_Musteri.cs" />
-    <Compile Include="Concrete\tbl_Users.cs" />
+    <Compile Include="Concrete\tbl_Kullanicilar.cs" />
     <Compile Include="Concrete\tbl_Vites.cs" />
     <Compile Include="Concrete\tbl_YakitTip.cs" />
     <Compile Include="MongoContext\IMongoContext.cs" />

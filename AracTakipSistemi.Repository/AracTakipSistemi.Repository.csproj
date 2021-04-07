@@ -121,7 +121,7 @@
     <Compile Include="Interfaces\IVites.cs" />
     <Compile Include="Interfaces\IYakitTip.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="Interfaces\IUsers.cs" />
+    <Compile Include="Interfaces\IKullanicilar.cs" />
     <Compile Include="MongoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AracRepository.cs" />
@@ -132,7 +132,7 @@
     <Compile Include="Repositories\ModelRepository.cs" />
     <Compile Include="Repositories\MotorTipRepository.cs" />
     <Compile Include="Repositories\MusteriRepository.cs" />
-    <Compile Include="Repositories\UsersRepository.cs" />
+    <Compile Include="Repositories\KullanicilarRepository.cs" />
     <Compile Include="Repositories\VitesRepository.cs" />
     <Compile Include="Repositories\YakitTipRepository.cs" />
     <Compile Include="Seeder\DataSeeder.cs" />

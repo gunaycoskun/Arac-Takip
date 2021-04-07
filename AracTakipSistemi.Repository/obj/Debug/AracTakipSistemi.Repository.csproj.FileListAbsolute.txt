@@ -28,3 +28,33 @@ F:\Visual Studio\AracTakipSistemi\AracTakipSistemi.Repository\obj\Debug\AracTaki
 F:\Visual Studio\AracTakipSistemi\AracTakipSistemi.Repository\obj\Debug\AracTakipSistemi.Repository.csproj.CopyComplete
 F:\Visual Studio\AracTakipSistemi\AracTakipSistemi.Repository\obj\Debug\AracTakipSistemi.Repository.dll
 F:\Visual Studio\AracTakipSistemi\AracTakipSistemi.Repository\obj\Debug\AracTakipSistemi.Repository.pdb
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\snappy32.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\snappy64.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\libzstd.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\mongocrypt.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\AracTakipSistemi.Repository.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\AracTakipSistemi.Repository.pdb
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\AracTakipSistemi.DAL.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\DnsClient.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\MongoDB.Bson.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\MongoDB.Driver.Core.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\MongoDB.Driver.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\MongoDB.LibMongocrypt.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\SharpCompress.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\System.Buffers.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\System.Linq.Dynamic.Core.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\AracTakipSistemi.DAL.pdb
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\DnsClient.xml
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\MongoDB.Bson.xml
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\MongoDB.Driver.xml
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\MongoDB.Driver.Core.xml
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\System.Buffers.xml
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\System.Linq.Dynamic.Core.pdb
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\System.Linq.Dynamic.Core.xml
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\obj\Debug\AracTakipSistemi.Repository.csprojAssemblyReference.cache
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\obj\Debug\AracTakipSistemi.Repository.csproj.CoreCompileInputs.cache
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\obj\Debug\AracTakipSistemi.Repository.csproj.CopyComplete
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\obj\Debug\AracTakipSistemi.Repository.dll
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.Repository\obj\Debug\AracTakipSistemi.Repository.pdb

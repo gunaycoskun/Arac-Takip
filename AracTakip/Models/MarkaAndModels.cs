@@ -6,8 +6,10 @@ using System.Web;
 
 namespace AracTakip.Models
 {
-    public class TümMotorlar
+    public class MarkaAndModels
     {
-        public List<tbl_MotorTip> motors { get; set; }
+        public string id { get; set; }
+        public string MarkaAD { get; set; }
+        public string ModelAD { get; set; }
     }
 }

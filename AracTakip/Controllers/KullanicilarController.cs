@@ -15,7 +15,7 @@ namespace AracTakip.Controllers
         [Route("get-all-users")]
         public ActionResult Kullanicilar()
         {
-            var kullanicilar = unitOfWork.Users.ToList();
+            var kullanicilar = unitOfWork.Kullanici.ToList();
             return View(kullanicilar);
         }
         [HttpGet]
@@ -28,34 +28,34 @@ namespace AracTakip.Controllers
         [Route("save-kullanicilar")]
         public ActionResult SaveUser(string Ad,string Password)
         {
-            tbl_Users users = new tbl_Users
+            tbl_Kullanicilar users = new tbl_Kullanicilar
             {
-                CreatedDate = DateTime.Now,
+                OlusturulmaTarihi = DateTime.Now,
                 KullaniciAdi = Ad,
                 Parola = Password
             };
-            unitOfWork.Users.Add(users);
+            unitOfWork.Kullanici.Add(users);
             unitOfWork.Save();
             return View();
         }
         public ActionResult DeleteKullanicilar(string id)
         {
-            var kullanici = unitOfWork.Users.Find(x => x._id == id);
-            unitOfWork.Users.Delete(kullanici);
+            var kullanici = unitOfWork.Kullanici.Find(x => x._id == id);
+            unitOfWork.Kullanici.Delete(kullanici);
             return RedirectToAction("Kullanicilar");
         }
         public ActionResult GetKullanicilar(string id)
         {
-            var kullaniciGet = unitOfWork.Users.Find(x => x._id == id);
+            var kullaniciGet = unitOfWork.Kullanici.Find(x => x._id == id);
             return View("GetKullanicilar",kullaniciGet);
         }
         [Route("update-kullanici")]
         public ActionResult UpdateKullanici(string id,string ad,string Password)
         {
-            var kullaniciUpdate = unitOfWork.Users.Find(x => x._id == id);
+            var kullaniciUpdate = unitOfWork.Kullanici.Find(x => x._id == id);
             kullaniciUpdate.Parola = Password;
             kullaniciUpdate.KullaniciAdi = ad;
-            unitOfWork.Users.Update(kullaniciUpdate);
+            unitOfWork.Kullanici.Update(kullaniciUpdate);
             unitOfWork.Save();
             return RedirectToAction("Kullanicilar");
         }

@@ -56,7 +56,7 @@ namespace AracTakip.Controllers
         [Route("update-cihaz")]
         public ActionResult UpdateCihaz(tbl_Cihaz c)
         {
-            var cihaz = unitOfWork.Cihaz.Find(x=>x._id==c._id);
+            var cihaz = unitOfWork.Cihaz.Find(x=>x._id == c._id);
             cihaz.CihazAd = c.CihazAd;
             cihaz.CihazIP = c.CihazIP;
             cihaz.CihazPort = c.CihazPort;

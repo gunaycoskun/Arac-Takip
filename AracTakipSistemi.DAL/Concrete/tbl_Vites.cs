@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AracTakipSistemi.DAL.Concrete
 {
-    [Table("tbl_KapiTip")]
+    [Table("tbl_Vites")]
     public class tbl_Vites
     {
         [Key]
