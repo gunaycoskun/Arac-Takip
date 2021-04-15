@@ -1,4 +1,4 @@
-﻿@model List<AracTakip.Models.MarkaAndModels>
+﻿@model List<AracTakipSistemi.DAL.Concrete.tbl_Marka>
 @{
     ViewBag.Title = "Marka";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,7 +9,6 @@
     <thead>
         <tr>
             <th scope="col">Marka AD</th>
-            <th scope="col">Model AD</th>
             <th scope="col">Sil</th>
             <th scope="col">Güncelle</th>
 
@@ -20,9 +19,8 @@
         {
             <tr>
                 <td scope="row">@item.MarkaAD</td>
-                <td scope="row">@item.ModelAD</td>
-                <td><a href="/Marka/DeleteMarka/@item.id" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Marka/GetMarka/@item.id" class="btn btn-warning">Güncelle</a></td>
+                <td><a href="/Marka/DeleteMarka/@item._id" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Marka/GetMarka/@item._id" class="btn btn-warning">Güncelle</a></td>
             </tr>
         }
 

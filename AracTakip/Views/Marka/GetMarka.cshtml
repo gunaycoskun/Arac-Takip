@@ -1,4 +1,4 @@
-﻿@model AracTakip.Models.MarkaModel
+﻿@model AracTakipSistemi.DAL.Concrete.tbl_Marka
 @{
     ViewBag.Title = "GetMarka";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +12,7 @@
         <label>Marka ADI</label>
         <input type="text" class="form-control" id="MarkaAD" value="@Model.MarkaAD">
     </div>
-    <div class="col-md-4">
+    @*<div class="col-md-4">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Model Türü</label>
         </div>
@@ -25,24 +25,21 @@
             }
 
         </select>
-    </div>
+    </div>*@
     <input class="btn btn-success" value="Markayı Güncelle" onclick="UpdateMarka()" />
 </div>
 
 
 <script type="text/javascript">
 
-    function UpdateMarka() {
-        alert("test");
-
-        
+    function UpdateMarka() {       
         var ad = $("#MarkaAD").val();
         var model = $("#ModelTipi").val();
         $.ajax({
             url: "/edit-marka",
             dataType: "json",
             type: "POST",
-            data: { id:'@Model._id', MarkaAD: ad, ModelID: model },
+            data: {MarkaAD: ad },
             success: function () {
 
             }

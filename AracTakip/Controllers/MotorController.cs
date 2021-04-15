@@ -1,4 +1,5 @@
 ﻿using AracTakip.Models;
+using AracTakip.Utils;
 using AracTakipSistemi.DAL.Concrete;
 using Eselfware.Repository.UnitOfWork;
 using System;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace AracTakip.Controllers
 {
-    public class MotorController : Controller
+    public class MotorController : BaseController
     {
         UnitOfWork unitOfWork = new UnitOfWork();
         // GET: Motor

@@ -13,7 +13,9 @@ namespace AracTakip.Models
         public string KapiID { get; set; }
         public string KasaID { get; set; }
         public string VitesID { get; set; }
-        public string  MotorID { get; set; }
+        public string MotorID { get; set; }
+        public string MarkaID { get; set; }
+        public List<tbl_Marka> markas { get; set; }
         public List<tbl_MotorTip> motors { get; set; }
     }
 }

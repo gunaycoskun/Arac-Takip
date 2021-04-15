@@ -9,6 +9,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
+            <td scope=""col>Marka AD</td>
             <th scope="col">Model AD</th>
             <th scope="col">Motor AD</th>
             <th scope="col">Kasa Tipi</th>
@@ -23,6 +24,7 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td scope="row">@item.MarkaAD</td>
                 <td scope="row">@item.ModelAD</td>
                 <td scope="row">@item.MotorAD</td>
                 <td scope="row">@item.KasaAD</td>

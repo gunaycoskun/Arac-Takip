@@ -75,14 +75,29 @@
             @foreach (var motor in Model.motors.OrderBy(x => x.MotorAD))
             {
 
-                <option @(Model.MotorID==motor._id? "selected":"") value="@motor._id"> @motor.MotorAD - @motor.MotorBeygir HP - @motor.MotorCC CC</option>
+                <option @(Model.MotorID == motor._id ? "selected" : "") value="@motor._id"> @motor.MotorAD - @motor.MotorBeygir HP - @motor.MotorCC CC</option>
+            }
+
+        </select>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Motor Türü</label>
+        </div>
+        <select class="custom-select" id="MotorTip">
+            <option selected>Motor Türünü Seçiniz</option>
+            @foreach (var marka in Model.markas.OrderBy(x => x.MarkaAD))
+            {
+
+                <option @(Model.MarkaID == marka._id ? "selected" : "") value="@marka._id"> @marka.MarkaAD</option>
             }
 
         </select>
     </div>
 </div>
+<br />
 <input type="hidden" value="@Model._id" id="ModelD" />
-<button class="btn btn-secondary" onclick="UpdateModel()">Güncelle</button>
+<button type="button" class="btn btn-secondary" onclick="UpdateModel()">Güncelle</button>
 <script>
     function UpdateModel() {
         var id = $("#ModelD").val();

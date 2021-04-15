@@ -1,4 +1,4 @@
-﻿@model List<AracTakipSistemi.DAL.Concrete.tbl_MotorTip>
+﻿@model AracTakip.Models.MotorAndMarka
 @{
     ViewBag.Title = "CreateModel";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -70,7 +70,7 @@
         </div>
         <select class="custom-select" id="MotorTip">
             <option selected>Motor Türünü Seçiniz</option>
-            @foreach (var motor in Model.OrderBy(x => x.MotorAD))
+            @foreach (var motor in Model.motors.OrderBy(x => x.MotorAD))
             {
 
                 <option value="@motor._id"> @motor.MotorAD - @motor.MotorBeygir HP - @motor.MotorCC CC</option>
@@ -78,11 +78,25 @@
 
         </select>
     </div>
+    <div class="col-md-4">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Motor Türü</label>
+        </div>
+        <select class="custom-select" id="Marka">
+            <option selected>Motor Türünü Seçiniz</option>
+            @foreach (var motor in Model.markas.OrderBy(x => x.MarkaAD))
+            {
+
+                <option value="@motor._id"> @motor.MarkaAD</option>
+            }
+
+        </select>
+    </div>
     <br />
-    <button type="button" style="height:10%; margin-top:38px;" class="btn btn-success" onclick="ModelKaydet()">Modeli Kaydet</button>
+
 </div>
 <br />
-
+<button type="button" style="height:10%; margin-top:38px;" class="btn btn-success" onclick="ModelKaydet()">Modeli Kaydet</button>
 
 <script>
     function ModelKaydet() {
@@ -91,13 +105,14 @@
         var KasaSelect = $("#KasaTip").val();
         var Vites = $("#VitesTip").val();
         var Motor = $("#MotorTip").val();
+        var Marka = $("#Marka").val();
 
 
         $.ajax({
             type: "POST",
             dataType: "json",
             url: "/save-model",
-            data: { ModelAD: ModelAD, KapiSelect: KapiSelect, KasaSelect: KasaSelect, Vites: Vites, Motor: Motor },
+            data: { ModelAD: ModelAD, KapiSelect: KapiSelect, KasaSelect: KasaSelect, Vites: Vites, Motor: Motor,Marka:Marka },
             success: function () {
                 Command: toastr["success"]("Model ekleme işlemi başarılı", "Model Ekleme")
 
