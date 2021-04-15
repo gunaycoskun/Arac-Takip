@@ -133,12 +133,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Araclar.cs" />
+    <Compile Include="Models\AracVeModeller.cs" />
     <Compile Include="Models\MarkaAndModels.cs" />
     <Compile Include="Models\MarkaModel.cs" />
     <Compile Include="Models\ModelAndMotors.cs" />
     <Compile Include="Models\Modeller.cs" />
+    <Compile Include="Models\MotorAndMarka.cs" />
     <Compile Include="Models\Motorlar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\BaseController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -781,6 +784,7 @@
     <Content Include="Views\Marka\Marka.cshtml" />
     <Content Include="Views\Marka\CreateMarka.cshtml" />
     <Content Include="Views\Marka\GetMarka.cshtml" />
+    <Content Include="Views\Araclar\CreateArac.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

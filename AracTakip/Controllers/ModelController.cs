@@ -1,4 +1,5 @@
 ﻿using AracTakip.Models;
+using AracTakip.Utils;
 using AracTakipSistemi.DAL.Concrete;
 using Eselfware.Repository.UnitOfWork;
 using System;
@@ -9,7 +10,7 @@ using System.Web.Mvc;
 
 namespace AracTakip.Controllers
 {
-    public class ModelController : Controller
+    public class ModelController : BaseController
     {
         UnitOfWork unitOfWork = new UnitOfWork();
         // GET: Model
@@ -21,6 +22,7 @@ namespace AracTakip.Controllers
                             join kapi in unitOfWork.KapiTip.ToList().DefaultIfEmpty() on model.KapiID equals kapi._id
                             join kasa in unitOfWork.KasaTip.ToList().DefaultIfEmpty() on model.KasaID equals kasa._id
                             join vites in unitOfWork.Vites.ToList().DefaultIfEmpty() on model.VitesID equals vites._id
+                            join marka in unitOfWork.Marka.ToList().DefaultIfEmpty() on model.MarkaID equals marka._id
                             select new Modeller
                             {
                                 _id = model._id,
@@ -28,7 +30,9 @@ namespace AracTakip.Controllers
                                 KasaAD=kasa.KasaAD?? "Kasa Tipi bulunamadı",
                                 ModelAD=model.ModelAD?? "Model bulunamadı",
                                 MotorAD=motor.MotorAD?? "Motor bulunamadı",
-                                VitesAD=vites.VitesAD+" "+vites.VitesSayisi?? "Vites Tipi bulunamadı"
+                                VitesAD=vites.VitesAD+" "+vites.VitesSayisi?? "Vites Tipi bulunamadı",
+                                MarkaAD=marka.MarkaAD??" Marka bulunamadı"
+
 
 
                             }).ToList();
@@ -38,12 +42,17 @@ namespace AracTakip.Controllers
         [Route("create-model")]
         public ActionResult CreateModel()
         {
-            var motors = unitOfWork.MotorTip.ToList();
-            return View(motors);
+            MotorAndMarka motorAndMarka = new MotorAndMarka
+            {
+                markas = unitOfWork.Marka.ToList(),
+                motors=unitOfWork.MotorTip.ToList()
+
+            };
+            return View(motorAndMarka);
         }
         [HttpPost]
         [Route("save-model")]
-        public ActionResult SaveModel(string ModelAD, string KapiSelect, string KasaSelect, string Vites, string Motor)
+        public ActionResult SaveModel(string ModelAD, string KapiSelect, string KasaSelect, string Vites, string Motor,string Marka)
         {
 
             tbl_Model model = new tbl_Model
@@ -52,7 +61,8 @@ namespace AracTakip.Controllers
                 KasaID=KasaSelect,
                 ModelAD=ModelAD,
                 VitesID= Vites,
-                MotorID= Motor
+                MotorID= Motor,
+                MarkaID=Marka
             };
             unitOfWork.Model.Add(model);
             unitOfWork.Save();
@@ -69,6 +79,7 @@ namespace AracTakip.Controllers
         public ActionResult GetModel(string id)
         {
             var motor = unitOfWork.MotorTip.ToList();
+            var marka = unitOfWork.Marka.ToList();
             var model = unitOfWork.Model.Find(x => x._id == id);
             ModelAndMotors modelAndMotors = new ModelAndMotors
             {
@@ -77,13 +88,15 @@ namespace AracTakip.Controllers
                 ModelAD = model.ModelAD,
                 VitesID = model.VitesID,
                 MotorID = model.MotorID,
+                MarkaID=model.MarkaID,
+                markas=marka,
                 _id = id,
                 motors=motor
             };
             return View("GetModel", modelAndMotors);
         }
         [Route("update-model")]
-        public ActionResult UpdateModel(string id, string ModelAD, string KapiSelect, string KasaSelect, string Vites, string Motor)
+        public ActionResult UpdateModel(string id, string ModelAD, string KapiSelect, string KasaSelect, string Vites, string Motor,string Marka)
         {
             var model=unitOfWork.Model.Find(x => x._id == id);
             model.VitesID = Vites;
@@ -91,6 +104,7 @@ namespace AracTakip.Controllers
             model.ModelAD = ModelAD;
             model.KasaID = KasaSelect;
             model.KapiID = KapiSelect;
+            model.MarkaID = Marka;
             unitOfWork.Model.Update(model);
             unitOfWork.Save();
             return RedirectToAction("Model");

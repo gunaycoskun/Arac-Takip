@@ -13,5 +13,6 @@ namespace AracTakip.Models
         public string KapiAD { get; set; }
         public string KasaAD { get; set; }
         public string VitesAD { get; set; }
+        public string MarkaAD { get; set; }
     }
 }

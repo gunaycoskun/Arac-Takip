@@ -1,4 +1,5 @@
-﻿using AracTakipSistemi.Repository.Seeder;
+﻿using AracTakip.Utils;
+using AracTakipSistemi.Repository.Seeder;
 using Eselfware.Repository.UnitOfWork;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,9 @@ namespace AracTakip.Controllers
             if (!_unitOfWork.Kullanici.Any(x => x.KullaniciAdi == Kullanici && x.Parola == Parola))
             {
                 DataSeeder.Seed(_unitOfWork);
+                Session.Add("AdminUser", Kullanici);
                 return Json(deger);
+
                 
             }
             else

@@ -19,8 +19,8 @@ namespace AracTakipSistemi.DAL.Concrete
         public string _id { get; set; } = ObjectId.GenerateNewId().ToString();
         public string ModelAD { get; set; }
         public string KapiID { get; set; }
-        public string KasaID{ get; set; } 
-
+        public string KasaID{ get; set; }
+        public string MarkaID { get; set; }
         public string MotorID { get; set; }
         public string VitesID { get; set; }
   

@@ -12,20 +12,6 @@
         <label>Marka ADI</label>
         <input type="text" class="form-control" id="MarkaAD">
     </div>
-    <div class="col-md-4">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Model Türü</label>
-        </div>
-        <select class="custom-select" id="ModelTip">
-            <option selected>Model Seçiniz</option>
-            @foreach (var item in Model.OrderBy(x => x.ModelAD))
-            {
-
-                <option value="@item._id"> @item.ModelAD</option>
-            }
-
-        </select>
-    </div>
     <input class="btn btn-success form-group" onclick="SaveMarka()" style="margin-bottom:0px; margin-top:34px;" value="Marka Modeli Kaydet"/>
 </div>
 <script>

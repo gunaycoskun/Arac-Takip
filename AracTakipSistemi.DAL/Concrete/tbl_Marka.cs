@@ -18,6 +18,6 @@ namespace AracTakipSistemi.DAL.Concrete
         [BsonRepresentation(BsonType.String)]
         public string _id { get; set; } = ObjectId.GenerateNewId().ToString();
         public string MarkaAD { get; set; }
-        public string ModelID { get; set; }
+        //public string ModelID { get; set; }
     }
 }

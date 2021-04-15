@@ -1,4 +1,5 @@
 ﻿using AracTakip.Models;
+using AracTakip.Utils;
 using AracTakipSistemi.DAL.Concrete;
 using Eselfware.Repository.UnitOfWork;
 using System;
@@ -9,21 +10,14 @@ using System.Web.Mvc;
 
 namespace AracTakip.Controllers
 {
-    public class MarkaController : Controller
+    public class MarkaController : BaseController
     {
         UnitOfWork unitOfWork = new UnitOfWork();
         // GET: Marka
         [Route("get-all-marka")]
         public ActionResult Marka()
         {
-            var allMarka = (from marka in unitOfWork.Marka.ToList()
-                            join model in unitOfWork.Model.ToList() on marka.ModelID equals model._id
-                            select new MarkaAndModels
-                            {
-                                ModelAD = model.ModelAD,
-                                id = marka._id,
-                                MarkaAD = marka.MarkaAD
-                            }).ToList();
+            var allMarka = unitOfWork.Marka.ToList();
             return View(allMarka);
         }
         [HttpGet]
@@ -39,8 +33,7 @@ namespace AracTakip.Controllers
         {
             tbl_Marka marka = new tbl_Marka
             {
-                MarkaAD = MarkaAD,
-                ModelID = ModelID
+                MarkaAD = MarkaAD
             };
             unitOfWork.Marka.Add(marka);
             unitOfWork.Save();
@@ -54,25 +47,17 @@ namespace AracTakip.Controllers
         }
         public ActionResult GetMarka(string id)
         {
-            var models=unitOfWork.Model.ToList();
             var marka = unitOfWork.Marka.Find(x => x._id == id);
-            MarkaModel all = new MarkaModel{
-                MarkaAD = marka.MarkaAD,
-                _id=id,
-                ModelID=marka.ModelID,
-                models = models
-
-            };
+           
                  
-            return View("GetMarka", all);
+            return View("GetMarka", marka);
         }
         [HttpPost]
         [Route("edit-marka")]
-        public ActionResult EditMarka(string id,string MarkaAD,string ModelID)
+        public ActionResult EditMarka(string id,string MarkaAD)
         {
             var marka = unitOfWork.Marka.Find(x=>x._id == id);
             marka.MarkaAD = MarkaAD;
-            marka.ModelID = ModelID;
             unitOfWork.Marka.Update(marka);
             unitOfWork.Save();
             return View();

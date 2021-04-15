@@ -7,7 +7,7 @@
 <br />
 <h2>Araçlar</h2>
 
-<table class="table table-bordered">
+@*<table class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">Plaka</th>
@@ -36,6 +36,47 @@
         </tr>
         }
 
-    </tbody>
+    </tbody>*@
+
+@*<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Cihazlar Tablosu</h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table hover multiple-select-row nowrap" id="CihazTable">
+            <thead>
+                <tr>
+                    <th scope="col">CihazAD</th>
+                    <th scope="col">CihazIP</th>
+                    <th scope="col">CihazPort</th>
+                    <th scope="col">İşlemler</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="table-plus">@item.CihazAd</td>
+                        <td scope="row">@item.CihazIP</td>
+                        <td scope="row">@item.CihazPort</td>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    <i class="dw dw-more"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                    <a class="dropdown-item" href="/Cihaz/GetCihaz/@item._id"><i class="dw dw-edit2"></i> Güncelle</a>
+                                    <a class="dropdown-item" href="/Cihaz/DeleteCihaz/@item._id"><i class="dw dw-delete-3"></i> Sil</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>*@
 
 

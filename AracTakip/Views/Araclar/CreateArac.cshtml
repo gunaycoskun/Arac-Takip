@@ -1,0 +1,58 @@
+﻿@model AracTakip.Models.AracVeModeller
+@{
+    ViewBag.Title = "CreateArac";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateArac</h2>
+<div class="row">
+    <div class="col-md-4">
+        <label>Plaka</label>
+        <input type="text" class="form-control" id="Plaka"/>
+    </div>
+    <div class="col-md-4">
+        <label>Şasi Numarası</label>
+        <input type="text" class="form-control" id="SasiNo"/>
+    </div>
+    <div class="col-md-4">
+        <label>Renk</label>
+        <input type="text" class="form-control" id="Renk"/>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <select class="custom-select" id="Marka" onchange="getModels()">
+            <option selected>Marka seçiniz</option>
+            @foreach (var item in Model.markalar.OrderBy(x => x.MarkaAD))
+            {
+                <option value="@item._id"> @item.MarkaAD</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-4">
+        <select class="custom-select" id="Model">
+            <option selected>Model Seçiniz</option>
+            <script type="text/javascript">
+                    function getModels() {
+                        var markaid = $('#Model').val();
+                        var RegisterArchiveType = "All";
+                        $.ajax({
+                            url: "/get-marka-model",
+                            data: { markaid: markaid},
+                            dataType: "json",
+                            type: "POST",
+                            success: function (deger) {
+                                $('#Model').empty();
+                                for (var i = 0; i < deger.length; i++) {
+                                    $('#Model').append('<option value="' + deger.id + '">' + deviceName + " " + deger[i].Description + '</option > ');
+                                }
+                            }
+                        })
+                    }
+            </script>
+        </select>
+    </div>
+
+</div>
+
