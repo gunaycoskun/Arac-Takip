@@ -4,24 +4,33 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h2>Cihaz Güncelleme</h2>
+<h2>@Model.CihazAd Cihazı Güncelleme</h2>
 
 
-
-@using (Html.BeginForm("UpdateCihaz", "Cihaz", FormMethod.Post))
-{
-    <div class="form-group">
-        <label>Cihaz Ad</label>
-        @Html.TextBoxFor(x => x.CihazAd, new { @class = "form-control" })
-        <label>Cihaz IP</label>
-        @Html.TextBoxFor(x => x.CihazIP, new { @class = "form-control" })
-        <label>Cihaz Port</label>
-        @Html.TextBoxFor(x => x.CihazPort, new { @class = "form-control" })
-        @Html.HiddenFor(x => x._id)
+<div class="row">
+    <div class="col-md-6">
+        <label>IP</label>
+        <input type="text" id="IP" class="form-control" value="@Model.CihazIP"/>
     </div>
-    <button  type="button" class="btn btn-secondary">Güncelle</button>
-}
-
+    <div class="col-md-6">
+        <label>Port</label>
+        <input type="text" id="Port" class="form-control" value="@Model.CihazPort"/>
+    </div>
+</div>
+<br />
+<input type="button" class="btn btn-success" value="Ip Port Kaydet" onclick="KaydetCihaz()"/>
+<script>
+    function KaydetCihaz() {
+        var ip = $("#IP").val();
+        var port = $("#Port").val();
+        $.ajax({
+            url: "/update-cihaz",
+            dataType: "json",
+            type: "POST",
+            data: { ip: ip,port:port,id:'@Model._id'}
+        })
+    }
+</script>
 
 
 

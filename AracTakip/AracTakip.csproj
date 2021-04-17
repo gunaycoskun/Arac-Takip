@@ -129,6 +129,7 @@
     <Compile Include="Controllers\MarkaController.cs" />
     <Compile Include="Controllers\ModelController.cs" />
     <Compile Include="Controllers\MotorController.cs" />
+    <Compile Include="Controllers\MusteriController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +149,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\select2.min.css" />
+    <Content Include="Content\select2.min.js" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -785,6 +788,9 @@
     <Content Include="Views\Marka\CreateMarka.cshtml" />
     <Content Include="Views\Marka\GetMarka.cshtml" />
     <Content Include="Views\Araclar\CreateArac.cshtml" />
+    <Content Include="Views\Musteri\Musteri.cshtml" />
+    <Content Include="Views\Musteri\AddMusteri.cshtml" />
+    <Content Include="Views\Musteri\GetMusteri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

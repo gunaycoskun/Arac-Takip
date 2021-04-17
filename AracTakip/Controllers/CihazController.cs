@@ -55,12 +55,12 @@ namespace AracTakip.Controllers
             return View("GetCihaz", cihaz);
         }
         [Route("update-cihaz")]
-        public ActionResult UpdateCihaz(tbl_Cihaz c)
+        public ActionResult UpdateCihaz(string id,string ip,string port)
         {
-            var cihaz = unitOfWork.Cihaz.Find(x=>x._id == c._id);
-            cihaz.CihazAd = c.CihazAd;
-            cihaz.CihazIP = c.CihazIP;
-            cihaz.CihazPort = c.CihazPort;
+            var cihaz = unitOfWork.Cihaz.Find(x=>x._id == id);
+
+            cihaz.CihazIP = ip;
+            cihaz.CihazPort = port;
             unitOfWork.Cihaz.Update(cihaz);
             unitOfWork.Save();
             return RedirectToAction("Cihaz");
