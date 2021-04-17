@@ -8,15 +8,15 @@ namespace AracTakip.Utils
 {
     public class BaseController : Controller
     {
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            //base.OnActionExecuting(filterContext);
-            if (Session["AdminUser"]==null )
-            {
-                Response.Redirect("/Login");
-            }
+        //protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        //{
+        //    //base.OnActionExecuting(filterContext);
+        //    if (Session["AdminUser"]==null )
+        //    {
+        //        Response.Redirect("/Login");
+        //    }
            
-        }
+        //}
         // GET: Base
         public ActionResult Index()
         {

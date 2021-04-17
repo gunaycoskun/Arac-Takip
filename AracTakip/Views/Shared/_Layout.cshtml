@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="~/Folder/src/plugins/datatables/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="~/Folder/vendors/styles/style.css">
     <link href="~/Content/toastr.css" rel="stylesheet" />
-
+    <link href="~/Content/select2.min.css" rel="stylesheet" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
     <script>
@@ -34,19 +34,7 @@
     </script>
 </head>
 <body>
-    @*<div class="pre-loader">
-            <div class="pre-loader-box">
-                <div class="loader-logo"><img src="vendors/images/deskapp-logo.svg" alt=""></div>
-                <div class='loader-progress' id="progress_div">
-                    <div class='bar' id='bar1'></div>
-                </div>
-                <div class='percent' id='percent1'>0%</div>
-                <div class="loading-text">
-                    Loading...
-                </div>
-            </div>
-        </div>*@
-
+    
     <div class="header">
         <div class="header-left">
             <div class="menu-icon dw dw-menu"></div>
@@ -247,8 +235,8 @@
                             <span class="micon dw dw-library"></span><span class="mtext">Araçlar</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="basic-table.html">Tüm Araçlar</a></li>
-                            <li><a href="datatable.html">Araç Ekle</a></li>
+                            <li><a href="/get-all-araclar">Tüm Araçlar</a></li>
+                            <li><a href="/create-arac">Araç Ekle</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -272,15 +260,6 @@
                     </li>
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-analytics-21"></span><span class="mtext">Müşteriler</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="/get-all-müsteriler">Tüm Müşteriler</a></li>
-                            <li><a href="/create-müsteri">Müşteri Oluştur</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon dw dw-right-arrow1"></span><span class="mtext">Araç Modelleri</span>
                         </a>
                         <ul class="submenu">
@@ -300,81 +279,23 @@
 
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-copy"></span><span class="mtext">Extra Pages</span>
+                            <span class="micon dw dw-copy"></span><span class="mtext">Müşteriler</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="blank.html">Blank</a></li>
-                            <li><a href="contact-directory.html">Contact Directory</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="blog-detail.html">Blog Detail</a></li>
-                            <li><a href="product.html">Product</a></li>
-                            <li><a href="product-detail.html">Product Detail</a></li>
-                            <li><a href="faq.html">FAQ</a></li>
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="pricing-table.html">Pricing Tables</a></li>
+                            <li><a href="/get-all-musteri">Tüm Müşteriler</a></li>
+                            <li><a href="/add-musteri">Yeni Müşteri Oluştur</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-list3"></span><span class="mtext">Multi Level Menu</span>
+                            <span class="micon dw dw-list3"></span><span class="mtext">Cihazlar</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="javascript:;">Level 1</a></li>
-                            <li><a href="javascript:;">Level 1</a></li>
-                            <li><a href="javascript:;">Level 1</a></li>
-                            <li class="dropdown">
-                                <a href="javascript:;" class="dropdown-toggle">
-                                    <span class="micon fa fa-plug"></span><span class="mtext">Level 2</span>
-                                </a>
-                                <ul class="submenu child">
-                                    <li><a href="javascript:;">Level 2</a></li>
-                                    <li><a href="javascript:;">Level 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="javascript:;">Level 1</a></li>
-                            <li><a href="javascript:;">Level 1</a></li>
-                            <li><a href="javascript:;">Level 1</a></li>
+                            <li><a href="/get-all-cihaz">Tüm Cihazlar</a></li>
+
                         </ul>
                     </li>
-                    <li>
-                        <a href="sitemap.html" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-diagram"></span><span class="mtext">Sitemap</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="chat.html" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-chat3"></span><span class="mtext">Chat</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="invoice.html" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-invoice"></span><span class="mtext">Invoice</span>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <div class="sidebar-small-cap">Extra</div>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-edit-2"></span><span class="mtext">Documentation</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="introduction.html">Introduction</a></li>
-                            <li><a href="getting-started.html">Getting Started</a></li>
-                            <li><a href="color-settings.html">Color Settings</a></li>
-                            <li><a href="third-party-plugins.html">Third Party Plugins</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-paper-plane1"></span>
-                            <span class="mtext">Landing Page <img src="vendors/images/coming-soon.png" alt="" width="25"></span>
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -392,12 +313,16 @@
     <script src="~/Folder/vendors/scripts/script.min.js"></script>
     <script src="~/Folder/vendors/scripts/process.js"></script>
     <script src="~/Folder/vendors/scripts/layout-settings.js"></script>
-
+    <script src="~/Content/select2.min.js"></script>
     <script src="~/Folder/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <script src="~/Folder/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Folder/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
     <script src="~/Folder/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
     <script src="~/Folder/vendors/scripts/dashboard.js"></script>
-
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
 </body>
 </html>

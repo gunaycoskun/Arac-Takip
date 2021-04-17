@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "AddMusteri";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Müşteri Ekleme Sayfası</h2>
+<div class="row">
+    <div class="col-md-6">
+        <label>AD SOYAD</label>
+        <input type="text" class="form-control" placeholder="Günay Özcan" id="txtAdSoyad"/>
+    </div>
+    <div class="col-md-6">
+        <label>TC NO</label>
+        <input type="number" class="form-control" placeholder="12345678912" maxlength="11" id="txtTC" />
+    </div>
+</div>
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+        <label>EMAİL</label>
+        <input type="email" class="form-control" placeholder="deneme@gmail.com" id="txtEMail" />
+    </div>
+    <div class="col-md-6">
+        <label>Telefon Numaranız</label>
+        <input type="tel" class="form-control" placeholder="5426933691" id="txtTel"/>
+    </div>
+</div>
+<br />
+<input type="button" class="btn btn-success" value="Müşteriyi Ekle" onclick="AddMusteri()" id="btnAddMusteri"/>
+<script>
+
+    
+    function AddMusteri() {
+        var TC = $("#txtTC").val();
+        var AdSoyad = $("#txtAdSoyad").val();
+        var Email = $("#txtEMail").val();
+        var Tel = $("#txtTel").val();
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            url: "/add-musteri-ajax",
+            data: { TC: TC, AdSoyad: AdSoyad, Email: Email, Tel: Tel},
+            success: function (deger) {
+                if (deger==1) {
+                    Command: toastr["success"]("Müşteri Ekleme İşlemi Başarılı.", "Ekleme")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+                else {
+                    Command: toastr["error"]("Müşteri Ekleme İşlemi Başarısız.", "Ekleme")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+                
+            }
+
+
+        })
+    }
+    
+</script>

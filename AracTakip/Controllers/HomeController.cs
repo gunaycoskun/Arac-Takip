@@ -42,7 +42,7 @@ namespace AracTakip.Controllers
             if (!_unitOfWork.Kullanici.Any(x => x.KullaniciAdi == Kullanici && x.Parola == Parola))
             {
                 DataSeeder.Seed(_unitOfWork);
-                Session.Add("AdminUser", Kullanici);
+                //Session.Add("AdminUser", Kullanici);
                 return Json(deger);
 
                 

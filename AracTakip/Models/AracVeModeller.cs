@@ -10,5 +10,6 @@ namespace AracTakip.Models
     {
         public List<tbl_Marka> markalar { get; set; }
         public List<tbl_Model> modeller { get; set; }
+        public List<tbl_Musteri> musteriler { get; set; }
     }
 }

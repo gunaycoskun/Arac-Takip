@@ -34,12 +34,12 @@
 
     function UpdateMarka() {       
         var ad = $("#MarkaAD").val();
-        var model = $("#ModelTipi").val();
+        var id = '@Model._id';
         $.ajax({
             url: "/edit-marka",
             dataType: "json",
             type: "POST",
-            data: {MarkaAD: ad },
+            data: {id:id,MarkaAD: ad },
             success: function () {
 
             }

@@ -6,23 +6,27 @@
 
 <h2>CreateArac</h2>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Plaka</label>
-        <input type="text" class="form-control" id="Plaka"/>
+        <input type="text" class="form-control" id="Plaka" />
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Şasi Numarası</label>
-        <input type="text" class="form-control" id="SasiNo"/>
+        <input type="text" class="form-control" id="SasiNo" />
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <label>Renk</label>
-        <input type="text" class="form-control" id="Renk"/>
+        <input type="text" class="form-control" id="Renk" />
+    </div>
+    <div class="col-md-3">
+        <label>Yıl</label>
+        <input type="text" class="form-control" id="Yil" />
     </div>
 </div>
 <br />
 <div class="row">
     <div class="col-md-4">
-        <select class="custom-select" id="Marka" onchange="getModels()">
+        <select class="js-example-basic-single form-control" id="Marka">
             <option selected>Marka seçiniz</option>
             @foreach (var item in Model.markalar.OrderBy(x => x.MarkaAD))
             {
@@ -31,28 +35,87 @@
         </select>
     </div>
     <div class="col-md-4">
-        <select class="custom-select" id="Model">
-            <option selected>Model Seçiniz</option>
-            <script type="text/javascript">
-                    function getModels() {
-                        var markaid = $('#Model').val();
-                        var RegisterArchiveType = "All";
-                        $.ajax({
-                            url: "/get-marka-model",
-                            data: { markaid: markaid},
-                            dataType: "json",
-                            type: "POST",
-                            success: function (deger) {
-                                $('#Model').empty();
-                                for (var i = 0; i < deger.length; i++) {
-                                    $('#Model').append('<option value="' + deger.id + '">' + deviceName + " " + deger[i].Description + '</option > ');
-                                }
-                            }
-                        })
-                    }
-            </script>
+        <select class="js-example-basic-single form-control" id="Model" >
+            <option selected>Modeli seçiniz</option>
+            @foreach (var item in Model.modeller.OrderBy(x => x.ModelAD))
+            {
+                <option value="@item._id"> @item.ModelAD</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-4">
+        <select class="js-example-basic-single form-control" id="Musteri" >
+            <option selected>Müşteri seçiniz</option>
+            @foreach (var item in Model.musteriler.OrderBy(x => x.MusteriAdSoyad))
+            {
+                <option value="@item._id"> @item.MusteriAdSoyad - @item.MusteriTC</option>
+            }
         </select>
     </div>
 
 </div>
+<br />
+<input type="button" class="btn btn-success" onclick="SaveArac()" value="ARacı Kaydet" />
+<script>
+    function SaveArac() {
+        var plaka = $("#Plaka").val();
+        var sasi = $("#SasiNo").val();
+        var renk = $("#Renk").val(); 
+        var marka = $("#Marka").val();
+        var model = $("#Model").val();
+        var musteri = $("#Musteri").val();
+        var yil = $("#Yil").val();
+        $.ajax({
+            url: "/save-arac",
+            type: "POST",
+            dataType: "json",
+            data: { plaka: plaka, sasi: sasi, renk: renk, marka: marka, model: model, musteri: musteri,yil:yil},
+            success: function (deger) {
+                if (deger==1) {
+                    Command: toastr["success"]("Araç Kaydetme İşlemi Başarılı.", "Araç")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+                else {
+                    Command: toastr["error"]("Araç Kaydetme İşlemi Başarısız.", "Araç")
+
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "showDuration": "300",
+                        "hideDuration": "1000",
+                        "timeOut": "5000",
+                        "extendedTimeOut": "1000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                }
+            }
+        })
+    }
+</script>
+
 

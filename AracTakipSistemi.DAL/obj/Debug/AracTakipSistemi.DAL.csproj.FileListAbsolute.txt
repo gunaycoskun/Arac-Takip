@@ -43,8 +43,8 @@ F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\bin\Debug\MongoD
 F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\bin\Debug\MongoDB.Driver.Core.xml
 F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\bin\Debug\System.Buffers.xml
 F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\obj\Debug\AracTakipSistemi.DAL.csprojAssemblyReference.cache
 F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\obj\Debug\AracTakipSistemi.DAL.csproj.CoreCompileInputs.cache
 F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\obj\Debug\AracTakipSistemi.DAL.csproj.CopyComplete
 F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\obj\Debug\AracTakipSistemi.DAL.dll
 F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\obj\Debug\AracTakipSistemi.DAL.pdb
+F:\Users\Gunay\Documents\GitHub\Arac-Takip\AracTakipSistemi.DAL\obj\Debug\AracTakipSistemi.DAL.csprojAssemblyReference.cache
