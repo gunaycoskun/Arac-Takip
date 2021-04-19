@@ -21,7 +21,7 @@
             <div class="row" style="text-align:center;">
                 <img style="height:80%;" src="~/Folder/img/aractakipgif.gif" />
             </div>
-            <div class="row" style="text-align:center;">
+            <div class="row" style="text-align:center;" id="Calisan">
                 <div class="col-md-4"></div>
                 <div class="col-md-4" id="girisPaneli" style="line-height: 2;">
                     <label>Kullanıcı Adı</label><br />
@@ -30,6 +30,18 @@
                     <input type="password" id="txtParola" class="form-control" />
                     <br />
                     <input type="button" class="btn btn-success" value="Giriş" onclick="Giris()" />
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row" style="text-align:center;" id="Musteri">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" id="girisPaneli" style="line-height: 2;">
+                    <label>TC</label><br />
+                    <input type="text" id="txtTC" class="form-control" />
+                    <label>Plaka</label>
+                    <input type="text" id="txtPlaka" class="form-control" />
+                    <br />
+                    <input type="button" class="btn btn-success" value="Giriş" onclick="MusteriGiris()" />
                 </div>
                 <div class="col-md-4"></div>
             </div>
@@ -49,6 +61,20 @@
                 data: { Kullanici: kullanici, Parola: parola },
                 success: function (data) {
                     window.location.replace("/get-all-cihaz");
+                }
+
+            });
+        }
+        function MusteriGiris() {
+            var TC = $("#txtTC").val();
+            var plaka = $("#txtPlaka").val();
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/harita-getir",
+                data: { TC: TC, plaka: plaka },
+                success: function (data) {
+                    window.location.replace("get-harita?id="+data);
                 }
 
             });

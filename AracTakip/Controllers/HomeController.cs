@@ -21,7 +21,8 @@ namespace AracTakip.Controllers
         }
 
         //[HttpPost]
-        public ActionResult About(string Kullanici,string Parola)
+        [Route("About")]
+        public ActionResult About()
         {
 
 
