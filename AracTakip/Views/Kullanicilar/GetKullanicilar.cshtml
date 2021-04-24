@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-<h2>GetKullanicilar</h2>
+<h2>Kullanıcı Güncelleme</h2>
 
 <div class="row" style="margin-top:20px;">
 
@@ -80,29 +80,8 @@
                 dataType: "json",
                 url: "/update-kullanici",
                 data: { Ad: ad, Password: pass, id: '@Model._id' },
-                success: function (deger) {
-
-                    Command: toastr["success"]("Güncelleme İşlemi Başarılı.", "Güncelleme İşlemi")
-
-                    toastr.options = {
-                        "closeButton": false,
-                        "debug": false,
-                        "newestOnTop": false,
-                        "progressBar": true,
-                        "positionClass": "toast-top-right",
-                        "preventDuplicates": false,
-                        "onclick": null,
-                        "showDuration": "300",
-                        "hideDuration": "1000",
-                        "timeOut": "3000",
-                        "extendedTimeOut": "1000",
-                        "showEasing": "swing",
-                        "hideEasing": "linear",
-                        "showMethod": "fadeIn",
-                        "hideMethod": "fadeOut"
-                    }
-                    window.location.reload()
-                    
+                success: function (deger) {                   
+                    window.location.replace("/get-all-users"); 
                 }
 
             });

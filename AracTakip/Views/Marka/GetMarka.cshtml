@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateMarka</h2>
+<h2>Marka Oluştur</h2>
 <br />
 <div class="row">
 
@@ -13,26 +13,27 @@
         <input type="text" class="form-control" id="MarkaAD" value="@Model.MarkaAD">
     </div>
     @*<div class="col-md-4">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Model Türü</label>
-        </div>
-        <select class="custom-select" id="ModelTipi">
-            <option selected>Model Seçiniz</option>
-            @foreach (var item in Model.models.OrderBy(x => x.ModelAD))
-            {
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Model Türü</label>
+            </div>
+            <select class="custom-select" id="ModelTipi">
+                <option selected>Model Seçiniz</option>
+                @foreach (var item in Model.models.OrderBy(x => x.ModelAD))
+                {
 
-                <option @(Model.ModelID == item._id ? "selected" : " ") value=@item._id> @item.ModelAD</option>
-            }
+                    <option @(Model.ModelID == item._id ? "selected" : " ") value=@item._id> @item.ModelAD</option>
+                }
 
-        </select>
-    </div>*@
-    <input class="btn btn-success" value="Markayı Güncelle" onclick="UpdateMarka()" />
+            </select>
+        </div>*@
+
 </div>
-
+<br />
+<input type="button" class="btn btn-success" value="Markayı Güncelle" onclick="UpdateMarka()" />
 
 <script type="text/javascript">
 
-    function UpdateMarka() {       
+    function UpdateMarka() {
         var ad = $("#MarkaAD").val();
         var id = '@Model._id';
         $.ajax({
@@ -40,8 +41,8 @@
             dataType: "json",
             type: "POST",
             data: {id:id,MarkaAD: ad },
-            success: function () {
-
+            success: function (deger) {
+                window.location.replace("/get-all-marka");
             }
         });
 

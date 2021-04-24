@@ -1,39 +1,52 @@
 ﻿@model List<AracTakip.Models.Modeller>
 @{
-    ViewBag.Title = "Model";
+    ViewBag.Title = "Model Tablosu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Model</h2>
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <td scope=""col>Marka AD</td>
-            <th scope="col">Model AD</th>
-            <th scope="col">Motor AD</th>
-            <th scope="col">Kasa Tipi</th>
-            <th scope="col">Kapı Tipi</th>
-            <th scope="col">Vites</th>
-            <th scope="col">Sil</th>
-            <th scope="col">Güncelle</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td scope="row">@item.MarkaAD</td>
-                <td scope="row">@item.ModelAD</td>
-                <td scope="row">@item.MotorAD</td>
-                <td scope="row">@item.KasaAD</td>
-                <td scope="row">@item.KapiAD</td>
-                <td scope="row">@item.VitesAD</td>
-                <td><a href="/Model/DeleteModel/@item._id" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Model/GetModel/@item._id" class="btn btn-warning">Güncelle</a></td>
-            </tr>
-        }
-
-    </tbody>
-</table>
+<br />
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">
+            Model Tablosu
+        </h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table hover multiple-select-row nowrap" id="CihazTable">
+            <thead>
+                <tr>
+                    <td scope="col">Marka AD</td>
+                    <th scope="col">Model AD</th>
+                    <th scope="col">Motor AD</th>
+                    <th scope="col">Kasa Tipi</th>
+                    <th scope="col">Kapı Tipi</th>
+                    <th scope="col">Vites</th>
+                    <th scope="col">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td scope="row">@item.MarkaAD</td>
+                        <td scope="row">@item.ModelAD</td>
+                        <td scope="row">@item.MotorAD</td>
+                        <td scope="row">@item.KasaAD</td>
+                        <td scope="row">@item.KapiAD</td>
+                        <td scope="row">@item.VitesAD</td>
+                        <td>
+                            <div class="dropdown">
+                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                    <i class="dw dw-more"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                    <a class="dropdown-item" href="/Model/DeleteModel/@item._id"><i class="dw dw-delete-3"></i> Sil</a>
+                                    <a class="dropdown-item" href="/Model/GetModel/@item._id"><i class="dw dw-edit2"></i> Güncelle</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

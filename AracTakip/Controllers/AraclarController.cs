@@ -80,5 +80,54 @@ namespace AracTakip.Controllers
             var markaAD = unitOfWork.Marka.Select(x => x._id == markaid).FirstOrDefault();
             return View();
         }
+     
+        public ActionResult DeleteArac(string id)
+        {
+            var arac=unitOfWork.Arac.Find(x => x._id == id);
+            var cihaz = unitOfWork.Cihaz.Find(x => x._id == id);
+            unitOfWork.Arac.Delete(arac);
+            unitOfWork.Cihaz.Delete(cihaz);
+            unitOfWork.Save();
+            return RedirectToAction("Araclar");
+        }
+        public ActionResult GetArac(string id)
+        {
+            var arac = unitOfWork.Arac.Find(x => x._id == id);
+            var markalar = unitOfWork.Marka.ToList();
+            var modeller = unitOfWork.Model.ToList();
+            var musteriler = unitOfWork.Musteri.ToList();
+            AracGuncelleme guncelleme = new AracGuncelleme
+            {       
+                markalar = markalar,
+                modeller = modeller,
+                musteriler = musteriler,
+                MarkaID=arac.MarkaID,
+                ModelID=arac.ModelID,
+                MusteriID=arac.MusteriID,
+                Plaka=arac.Plaka,
+                Renk=arac.Renk,
+                SasiNo=arac.SasiNo,
+                Yil=arac.Yil,
+                _id=arac._id
+                
+            };
+
+            return View(guncelleme);
+        }
+        [Route("update-arac")]
+        public ActionResult UpdateArac(string plaka, string sasi, string renk, string marka, string model, string musteri, string yil,string id)
+        {
+            var arac = unitOfWork.Arac.Find(x => x._id == id);
+            arac.Yil = yil;
+            arac.SasiNo = sasi;
+            arac.Renk = renk;
+            arac.Plaka = plaka;
+            arac.MusteriID = musteri;
+            arac.ModelID = model;
+            arac.MarkaID = marka;
+            unitOfWork.Arac.Update(arac);
+            unitOfWork.Save();
+            return Json("1");
+        }
     }
 }

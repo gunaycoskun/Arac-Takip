@@ -11,9 +11,8 @@ namespace AracTakip.Controllers
     public class HaritaController : Controller
     {
         UnitOfWork _unitOfWork = new UnitOfWork();
-        string s1 = "";
-        string s2 = "";
-        // GET: Harita
+       
+ 
         [Route("harita-getir")]
         public ActionResult Harita(string plaka, string TC)
         {

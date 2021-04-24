@@ -134,6 +134,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AracGuncelleme.cs" />
     <Compile Include="Models\Araclar.cs" />
     <Compile Include="Models\AracVeModeller.cs" />
     <Compile Include="Models\Locations.cs" />
@@ -797,6 +798,7 @@
     <Content Include="Views\Musteri\GetMusteri.cshtml" />
     <Content Include="Views\Harita\Harita.cshtml" />
     <Content Include="Views\Harita\GetHarita.cshtml" />
+    <Content Include="Views\Araclar\GetArac.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
