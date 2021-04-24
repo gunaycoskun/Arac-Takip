@@ -4,25 +4,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Marka</h2>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th scope="col">Marka AD</th>
-            <th scope="col">Sil</th>
-            <th scope="col">Güncelle</th>
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <h4 class="text-blue h4">Markalar Tablosu</h4>
+    </div>
+    <div class="pb-20">
+        <table class="data-table table hover multiple-select-row nowrap" id="CihazTable">
+            <thead>
+                <tr>
+                    <th scope="col">Marka AD</th>
+                    <th scope="col">İşlemler</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td scope="row">@item.MarkaAD</td>
-                <td><a href="/Marka/DeleteMarka/@item._id" class="btn btn-danger">Sil</a></td>
-                <td><a href="/Marka/GetMarka/@item._id" class="btn btn-warning">Güncelle</a></td>
-            </tr>
-        }
 
-    </tbody>
-</table>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td scope="row">@item.MarkaAD</td>
+
+                    <td>
+                        <div class="dropdown">
+                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                                <i class="dw dw-more"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                <a class="dropdown-item" href="/Marka/DeleteMarka/@item._id"><i class="dw dw-delete-3"></i> Sil</a>
+                                <a class="dropdown-item"  href="/Marka/GetMarka/@item._id"><i class="dw dw-edit2"></i> Güncelle</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

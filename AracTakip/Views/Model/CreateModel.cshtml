@@ -80,10 +80,10 @@
     </div>
     <div class="col-md-4">
         <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Motor Türü</label>
+            <label class="input-group-text" for="inputGroupSelect01">Marka Türü</label>
         </div>
         <select class="custom-select" id="Marka">
-            <option selected>Motor Türünü Seçiniz</option>
+            <option selected>Marka Seçiniz</option>
             @foreach (var motor in Model.markas.OrderBy(x => x.MarkaAD))
             {
 
@@ -113,27 +113,9 @@
             dataType: "json",
             url: "/save-model",
             data: { ModelAD: ModelAD, KapiSelect: KapiSelect, KasaSelect: KasaSelect, Vites: Vites, Motor: Motor,Marka:Marka },
-            success: function () {
-                Command: toastr["success"]("Model ekleme işlemi başarılı", "Model Ekleme")
-
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                window.location.replace("/get-all-cihaz");
+            success: function (deger) {
+               
+                window.location.replace("/get-all-model");
             }
         })
     }

@@ -63,7 +63,7 @@ namespace AracTakip.Controllers
             cihaz.CihazPort = port;
             unitOfWork.Cihaz.Update(cihaz);
             unitOfWork.Save();
-            return RedirectToAction("Cihaz");
+            return Json("Cihaz");
         }
     }
 }

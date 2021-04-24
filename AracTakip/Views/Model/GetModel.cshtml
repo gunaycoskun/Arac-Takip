@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>GetModel</h2>
+<h2>Model Güncelleme</h2>
 
 
 
@@ -84,8 +84,8 @@
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Motor Türü</label>
         </div>
-        <select class="custom-select" id="MotorTip">
-            <option selected>Motor Türünü Seçiniz</option>
+        <select class="custom-select" id="MarkaTip">
+            <option selected>Marka Türünü Seçiniz</option>
             @foreach (var marka in Model.markas.OrderBy(x => x.MarkaAD))
             {
 
@@ -106,6 +106,7 @@
         var KapiAD = $("#KapiSelect").val();
         var Vites = $("#VitesTip").val();
         var Motor = $("#MotorTip").val();
+        var Marka = $("#MarkaTip").val();
         $.ajax({
             url: "/update-model",
             dataType: "json",
@@ -116,7 +117,8 @@
                 KapiSelect: KapiAD,
                 KasaSelect: KasaAD,
                 Vites: Vites,
-                Motor: Motor
+                Motor: Motor,
+                Marka:Marka
             },
             success: function () {
                 window.location.assign("/get-all-model");

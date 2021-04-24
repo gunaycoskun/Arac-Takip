@@ -37,7 +37,7 @@ namespace AracTakip.Controllers
             };
             unitOfWork.Kullanici.Add(users);
             unitOfWork.Save();
-            return View();
+            return Json("success");
         }
         public ActionResult DeleteKullanicilar(string id)
         {
@@ -58,7 +58,7 @@ namespace AracTakip.Controllers
             kullaniciUpdate.KullaniciAdi = ad;
             unitOfWork.Kullanici.Update(kullaniciUpdate);
             unitOfWork.Save();
-            return RedirectToAction("Kullanicilar");
+            return Json("success");
         }
     }
 }

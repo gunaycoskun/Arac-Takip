@@ -27,7 +27,10 @@
             url: "/update-cihaz",
             dataType: "json",
             type: "POST",
-            data: { ip: ip,port:port,id:'@Model._id'}
+            data: { ip: ip, port: port, id: '@Model._id' },
+            success: function () {
+                window.location.replace("/get-all-cihaz");
+            }
         })
     }
 </script>

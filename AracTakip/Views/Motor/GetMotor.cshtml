@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>GetMotor</h2>
+<h2>Motor Güncelleme</h2>
 <div class="row">
     <div class="col-md-4">
         <label>Motor Beygir</label>
@@ -36,8 +36,9 @@
         <input type="text" class="form-control" id="Silindir" maxlength="3" value="@Model.Silindir">
     </div>
 </div>
+<br />
 <div>
-    <input class="btn btn-success" value="Motoru Güncelle" onclick="UpdateMotor()" />
+    <input type="button" class="btn btn-success" value="Motoru Güncelle" onclick="UpdateMotor()" />
 </div>
 <script>
     function UpdateMotor() {
@@ -53,7 +54,7 @@
             type: "POST",
             data: { MotorAD: MotorAD, MotorBeygir: MotorBeygir, MotorCC: MotorCC, Silindir: Silindir, Yakit: Yakit, id: id },
             success: function () {
-                window.location.replace("get-all-motor")
+                window.location.replace("/get-all-motor")
             }
         });
 

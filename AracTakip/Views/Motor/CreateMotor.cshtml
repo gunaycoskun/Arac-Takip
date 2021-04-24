@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateMotor</h2>
+<h2>Motor Oluştur</h2>
 <br />
 <div class="row">
     <div class="col-md-4">
@@ -28,7 +28,7 @@
     </div>
     <div class="col-md-6">
         <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Kapı Tipi</label>
+            <label class="input-group-text" for="inputGroupSelect01">Yakıt Tipi</label>
         </div>
         <select class="custom-select" id="Yakit">
             <option selected>Lütfen Yakıt Tipini Seçiniz</option>
@@ -41,7 +41,7 @@
 </div>
 <br />
 <div class="row">
-    <input style="margin-left:16px;" class="btn btn-success" value="Motor Kayıt" onclick="saveMotor()"/>
+    <input type="button" style="margin-left:16px;" class="btn btn-success" value="Motoru Kayıt" onclick="saveMotor()"/>
 </div>
 <script>
     function saveMotor() {

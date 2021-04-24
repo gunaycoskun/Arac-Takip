@@ -67,7 +67,7 @@ namespace AracTakip.Controllers
             unitOfWork.Model.Add(model);
             unitOfWork.Save();
 
-            return RedirectToAction("Model");
+            return Json("success");
         }
         public ActionResult DeleteModel(string id)
         {
@@ -107,7 +107,7 @@ namespace AracTakip.Controllers
             model.MarkaID = Marka;
             unitOfWork.Model.Update(model);
             unitOfWork.Save();
-            return RedirectToAction("Model");
+            return Json("Model");
         }
         [Route("select-motor")]
         public ActionResult MotoruGetir(string id)

@@ -104,7 +104,7 @@ namespace AracTakip.Controllers
             motor.Silindir = Silindir;
             unitOfWork.MotorTip.Update(motor);
             unitOfWork.Save();
-            return RedirectToAction("Motor");
+            return Json("success");
         }
     }
 }

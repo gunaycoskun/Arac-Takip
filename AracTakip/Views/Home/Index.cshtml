@@ -17,9 +17,15 @@
 </head>
 <body>
     <form>
+
         <div class="form-group">
+
             <div class="row" style="text-align:center;">
                 <img style="height:80%;" src="~/Folder/img/aractakipgif.gif" />
+            </div>
+            <div class="row" style="text-align:center;">
+                <input name="GirisTipi" type="radio" value="Calisan" id="radioCalisan" checked/><label style="margin-right:50px;">Çalışan</label>
+                <input name="GirisTipi" type="radio" value="Müsteri" id="radioMusteri"/><label>Müşteri</label>
             </div>
             <div class="row" style="text-align:center;" id="Calisan">
                 <div class="col-md-4"></div>
@@ -33,7 +39,7 @@
                 </div>
                 <div class="col-md-4"></div>
             </div>
-            <div class="row" style="text-align:center;" id="Musteri">
+            <div class="row" style="text-align:center;" id="Musteri" >
                 <div class="col-md-4"></div>
                 <div class="col-md-4" id="girisPaneli" style="line-height: 2;">
                     <label>TC</label><br />
@@ -49,8 +55,22 @@
     </form>
 
     <script>
-
-
+        var calisan = $("#Calisan");
+        var musteri = $("#Musteri");
+        $(document).ready(function () {
+            musteri.hide();
+        });
+        
+        $('input[type=radio][name=GirisTipi]').change(function () {
+            if (this.value == 'Calisan') {
+                calisan.show();
+                musteri.hide();
+            }
+            else if (this.value == 'Müsteri') {
+                musteri.show();
+                calisan.hide();
+            }
+        });
         function Giris() {
             var kullanici = $("#txtKullanici").val();
             var parola = $("#txtParola").val();

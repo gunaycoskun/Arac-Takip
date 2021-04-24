@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateMarka</h2>
+<h2>Marka Oluştur</h2>
 <br />
 <div class="row">
 
@@ -12,7 +12,7 @@
         <label>Marka ADI</label>
         <input type="text" class="form-control" id="MarkaAD">
     </div>
-    <input class="btn btn-success form-group" onclick="SaveMarka()" style="margin-bottom:0px; margin-top:34px;" value="Marka Modeli Kaydet"/>
+    <input type="button" class="btn btn-success form-group" onclick="SaveMarka()" style="margin-bottom:0px; margin-top:34px;" value="Marka Modeli Kaydet"/>
 </div>
 <script>
     function SaveMarka() {
@@ -21,8 +21,8 @@
             dataType: "json",
             type: "POST",
             data: { MarkaAD: $("#MarkaAD").val(), ModelID: $("#ModelTip").val() },
-            success: function () {
-
+            success: function (data) {
+                window.location.replace("/get-all-marka");
             }
            
 

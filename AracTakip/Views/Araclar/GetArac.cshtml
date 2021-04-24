@@ -1,6 +1,5 @@
-﻿@model AracTakip.Models.AracVeModeller
+﻿@model AracTakip.Models.AracGuncelleme
 @{
-    ViewBag.Title = "CreateArac";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,19 +8,19 @@
 <div class="row">
     <div class="col-md-3">
         <label>Plaka</label>
-        <input type="text" class="form-control" id="Plaka" />
+        <input type="text" class="form-control" id="Plaka" value="@Model.Plaka"/>
     </div>
     <div class="col-md-3">
         <label>Şasi Numarası</label>
-        <input type="text" class="form-control" id="SasiNo" />
+        <input type="text" class="form-control" id="SasiNo"  value="@Model.SasiNo"/>
     </div>
     <div class="col-md-3">
         <label>Renk</label>
-        <input type="text" class="form-control" id="Renk" />
+        <input type="text" class="form-control" id="Renk" value="@Model.Renk"/>
     </div>
     <div class="col-md-3">
         <label>Yıl</label>
-        <input type="text" class="form-control" id="Yil" />
+        <input type="text" class="form-control" id="Yil" value="@Model.Yil"/>
     </div>
 </div>
 <br />
@@ -31,49 +30,50 @@
             <option selected>Marka seçiniz</option>
             @foreach (var item in Model.markalar.OrderBy(x => x.MarkaAD))
             {
-                <option value="@item._id"> @item.MarkaAD</option>
+
+                <option @(item._id == Model.MarkaID ? "selected" : "")  value="@item._id"> @item.MarkaAD</option>
             }
         </select>
     </div>
     <div class="col-md-4">
-        <select class="js-example-basic-single form-control" id="Model" >
+        <select class="js-example-basic-single form-control" id="Model">
             <option selected>Modeli seçiniz</option>
             @foreach (var item in Model.modeller.OrderBy(x => x.ModelAD))
             {
-                <option value="@item._id"> @item.ModelAD</option>
+                <option @(item._id == Model.ModelID ? "selected" : "") value="@item._id"> @item.ModelAD</option>
             }
         </select>
     </div>
     <div class="col-md-4">
-        <select class="js-example-basic-single form-control" id="Musteri" >
+        <select class="js-example-basic-single form-control" id="Musteri">
             <option selected>Müşteri seçiniz</option>
             @foreach (var item in Model.musteriler.OrderBy(x => x.MusteriAdSoyad))
             {
-                <option value="@item._id"> @item.MusteriAdSoyad - @item.MusteriTC</option>
+                <option value="@item._id" @(item._id == Model.MusteriID ? "selected" : "")> @item.MusteriAdSoyad - @item.MusteriTC</option>
             }
         </select>
     </div>
 
 </div>
 <br />
-<input type="button" class="btn btn-success" onclick="SaveArac()" value="Aracı Kaydet" />
+<input type="button" class="btn btn-success" onclick="SaveArac()" value="Aracı Güncelle" />
 <script>
     function SaveArac() {
         var plaka = $("#Plaka").val();
         var sasi = $("#SasiNo").val();
-        var renk = $("#Renk").val(); 
+        var renk = $("#Renk").val();
         var marka = $("#Marka").val();
         var model = $("#Model").val();
         var musteri = $("#Musteri").val();
         var yil = $("#Yil").val();
         $.ajax({
-            url: "/save-arac",
+            url: "/update-arac",
             type: "POST",
             dataType: "json",
-            data: { plaka: plaka, sasi: sasi, renk: renk, marka: marka, model: model, musteri: musteri,yil:yil},
+            data: { plaka: plaka, sasi: sasi, renk: renk, marka: marka, model: model, musteri: musteri, yil: yil, id: '@Model._id' },
             success: function (deger) {
-                if (deger==1) {
-                    Command: toastr["success"]("Araç Kaydetme İşlemi Başarılı.", "Araç")
+                if (deger == 1) {
+                    Command: toastr["success"]("Araç Güncelleme İşlemi Başarılı.", "Araç")
 
                     toastr.options = {
                         "closeButton": false,
@@ -94,7 +94,7 @@
                     }
                 }
                 else {
-                    Command: toastr["error"]("Araç Kaydetme İşlemi Başarısız.", "Araç")
+                    Command: toastr["error"]("Araç Güncelleme İşlemi Başarısız.", "Araç")
 
                     toastr.options = {
                         "closeButton": false,
@@ -118,5 +118,3 @@
         })
     }
 </script>
-
-

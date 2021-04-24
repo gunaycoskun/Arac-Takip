@@ -37,7 +37,7 @@ namespace AracTakip.Controllers
             };
             unitOfWork.Marka.Add(marka);
             unitOfWork.Save();
-            return View();
+            return Json("success");
         }
         public ActionResult DeleteMarka(string id)
         {
@@ -60,7 +60,7 @@ namespace AracTakip.Controllers
             marka.MarkaAD = MarkaAD;
             unitOfWork.Marka.Update(marka);
             unitOfWork.Save();
-            return View();
+            return Json("success");
         }
     }
 }
