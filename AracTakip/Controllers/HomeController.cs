@@ -39,14 +39,14 @@ namespace AracTakip.Controllers
         [AllowAnonymous]
        public ActionResult AdminPanel(string Kullanici, string Parola)
         {
+           
             var deger = "1";
             if (_unitOfWork.Kullanici.Any(x => x.KullaniciAdi == Kullanici && x.Parola == Parola))
             {
+                Session.Add("User", true);
                 DataSeeder.Seed(_unitOfWork);
-                //Session.Add("AdminUser", Kullanici);
-                return Json(deger);
-
                 
+                return Json(deger);
             }
             else
             {
@@ -56,6 +56,13 @@ namespace AracTakip.Controllers
 
 
         }
+
+       [Route("cikis-islemi")]
+       public ActionResult Cikis()
+       {
+           Session.Clear();
+           return Json("");
+       }
        
     }
 }

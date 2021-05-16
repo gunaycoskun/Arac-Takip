@@ -17,23 +17,40 @@ namespace AracTakip.Controllers
         [Route("get-all-araclar")]
         public ActionResult Araclar()
         {
-            var araclar = unitOfWork.Arac.ToList();
-            return View(araclar);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var araclar = unitOfWork.Arac.ToList();
+                return View(araclar);
+            }
+
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpGet]
         [Route("create-arac")]
         public ActionResult CreateArac()
         {
-            var markalar = unitOfWork.Marka.ToList();
-            var modeller = unitOfWork.Model.ToList();
-            var musteriler = unitOfWork.Musteri.ToList();
-            AracVeModeller aracVeModeller = new AracVeModeller{
-                markalar =markalar,
-                modeller =modeller,
-                musteriler=musteriler
-            };
-            
-            return View(aracVeModeller);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var markalar = unitOfWork.Marka.ToList();
+                var modeller = unitOfWork.Model.ToList();
+                var musteriler = unitOfWork.Musteri.ToList();
+                AracVeModeller aracVeModeller = new AracVeModeller
+                {
+                    markalar = markalar,
+                    modeller = modeller,
+                    musteriler = musteriler
+                };
+                return View(aracVeModeller);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpPost]
         [Route("save-arac")]
@@ -77,8 +94,16 @@ namespace AracTakip.Controllers
         [Route("get-marka-model")]
         public ActionResult GetAllModels(string markaid)
         {
-            var markaAD = unitOfWork.Marka.Select(x => x._id == markaid).FirstOrDefault();
-            return View();
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var markaAD = unitOfWork.Marka.Select(x => x._id == markaid).FirstOrDefault();
+                return View();
+            }
+            else
+            {
+                return View("Error");
+            }
         }
      
         public ActionResult DeleteArac(string id)
@@ -117,6 +142,9 @@ namespace AracTakip.Controllers
         [Route("update-arac")]
         public ActionResult UpdateArac(string plaka, string sasi, string renk, string marka, string model, string musteri, string yil,string id)
         {
+            var cihaz = unitOfWork.Cihaz.Find(x => x._id == id);
+            cihaz.CihazAd = plaka;
+            unitOfWork.Cihaz.Update(cihaz);
             var arac = unitOfWork.Arac.Find(x => x._id == id);
             arac.Yil = yil;
             arac.SasiNo = sasi;

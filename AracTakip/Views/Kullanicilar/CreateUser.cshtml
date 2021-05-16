@@ -3,11 +3,8 @@
     ViewBag.Title = "CreateUser";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Kullanıcı Oluşturma Sayfası</h2>
-
 <div class="row" style="margin-top:20px;">
-
     <div class="col-md-4">
         <label>Kullanıcı Adı</label>
         <input type="text" id="kullanici-ad" class="form-control" maxlength="50" />
@@ -20,16 +17,10 @@
         <label>Şifre Doğrulama</label>
         <input type="text" id="kullanici-pass2" class="form-control" />
     </div>
-
     <input style="margin-top:25px;margin-left:15px;" class="btn btn-success" type="button" onclick="CreateUser()" value="Kullanıcı Oluştur" />
-
-    
 </div>
-
 <script>
-
     function CreateUser() {
-
         var ad = $("#kullanici-ad").val();
         var pass = $("#kullanici-pass").val();
         var pass2 = $("#kullanici-pass2").val();
@@ -82,9 +73,7 @@
                 url: "save-kullanicilar",
                 data: { Ad: ad, Password: pass },
                 success: function (deger) {
-
                     Command: toastr["success"]("Ekleme İşlemi Başarılı.", "Ekleme İşlemi")
-
                     toastr.options = {
                         "closeButton": false,
                         "debug": false,
@@ -102,11 +91,8 @@
                         "showMethod": "fadeIn",
                         "hideMethod": "fadeOut"
                     }
-                    /*window.location.replace("/get-all-users");*/
                 }
-
             });
         }
-
     }
 </script>

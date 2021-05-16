@@ -13,7 +13,7 @@ namespace AracTakipSistemi.Repository.Seeder
         [Obsolete]
         public static void Seed(IUnitOfWork _unitOfWork)
         {
-            if (_unitOfWork.Kullanici.FirstOrDefault()==null)
+            if (_unitOfWork.Kullanici.FirstOrDefault() == null)
             {
                 _unitOfWork.Kullanici.Add(new tbl_Kullanicilar
                 {
@@ -144,12 +144,13 @@ namespace AracTakipSistemi.Repository.Seeder
 
                 });
             }
-            if (_unitOfWork.Vites.FirstOrDefault() == null) {
+            if (_unitOfWork.Vites.FirstOrDefault() == null)
+            {
                 _unitOfWork.Vites.Add(new tbl_Vites
                 {
                     _id = "1",
-                    VitesAD="Manuel",
-                    VitesSayisi="5"
+                    VitesAD = "Manuel",
+                    VitesSayisi = "5"
                 });
                 _unitOfWork.Vites.Add(new tbl_Vites
                 {
@@ -197,6 +198,17 @@ namespace AracTakipSistemi.Repository.Seeder
 
             }
 
+            if (_unitOfWork.Marka.FirstOrDefault() == null)
+            {
+                string[] markalar = { "BMW", "Mercedes", "Skoda", "Yamaha", "Toyota", "Suzuki", "Bentley", "Cadillac", "Bugatti", "Citroen", "Dacia", "Fiat", "Honda", "Seat", "Hyundai", "Nissan", "Mazda" };
+                for (int i = 0; i < markalar.Length; i++)
+                {
+                    _unitOfWork.Marka.Add(new tbl_Marka
+                    {
+                        MarkaAD = markalar[i]
+                    });
+                }
+            }
         }
     }
 }

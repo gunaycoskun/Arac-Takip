@@ -17,14 +17,30 @@ namespace AracTakip.Controllers
         [AllowAnonymous]
         public ActionResult Cihaz()
         {
-            var values = unitOfWork.Cihaz.ToList();
-            return View(values);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var values = unitOfWork.Cihaz.ToList();
+                return View(values);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         [Route("create-cihaz-get")]
         public ActionResult CreateCihaz()
         {
-            return View();
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                return View();
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         [Route("create-cihaz-post")]
@@ -50,9 +66,16 @@ namespace AracTakip.Controllers
 
         public ActionResult GetCihaz(string id)
         {
-            var cihaz = unitOfWork.Cihaz.Find(x => x._id == id);
-           
-            return View("GetCihaz", cihaz);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var cihaz = unitOfWork.Cihaz.Find(x => x._id == id);
+                return View("GetCihaz", cihaz);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [Route("update-cihaz")]
         public ActionResult UpdateCihaz(string id,string ip,string port)
