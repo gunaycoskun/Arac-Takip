@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br />
-
 <div class="card-box mb-30">
     <div class="pd-20">
         <h4 class="text-blue h4">Kullanıcılar Tablosu</h4>
@@ -16,8 +15,6 @@
                     <th scope="col">Kullanıcı AD</th>
                     <th scope="col">Tarhi</th>
                     <th scope="col">İşlemler</th>
-                    
-
                 </tr>
             </thead>
             <tbody>
@@ -26,7 +23,6 @@
                 <tr>
                     <td scope="row">@item.KullaniciAdi</td>
                     <td scope="row">@item.OlusturulmaTarihi.ToString("dd/MM/yyyy HH:mm:ss")</td>
-                   
                     <td>
                         <div class="dropdown">
                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -40,7 +36,6 @@
                     </td>
                 </tr>
                 }
-
             </tbody>
         </table>
     </div>

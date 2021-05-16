@@ -16,14 +16,30 @@ namespace AracTakip.Controllers
         [Route("get-all-users")]
         public ActionResult Kullanicilar()
         {
-            var kullanicilar = unitOfWork.Kullanici.ToList();
-            return View(kullanicilar);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var kullanicilar = unitOfWork.Kullanici.ToList();
+                return View(kullanicilar);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpGet]
         [Route("create-kullanicilar")]
         public ActionResult CreateUser()
         {
-            return View();
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                return View();
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpPost]
         [Route("save-kullanicilar")]
@@ -47,8 +63,16 @@ namespace AracTakip.Controllers
         }
         public ActionResult GetKullanicilar(string id)
         {
-            var kullaniciGet = unitOfWork.Kullanici.Find(x => x._id == id);
-            return View("GetKullanicilar",kullaniciGet);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var kullaniciGet = unitOfWork.Kullanici.Find(x => x._id == id);
+                return View("GetKullanicilar", kullaniciGet);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [Route("update-kullanici")]
         public ActionResult UpdateKullanici(string id,string ad,string Password)

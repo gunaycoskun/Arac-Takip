@@ -17,43 +17,40 @@ namespace AracTakip.Controllers
         [Route("get-all-motor")]
         public ActionResult Motor()
         {
-
-            var motorlar = (from motor in unitOfWork.MotorTip.ToList().DefaultIfEmpty()
-                            join yakit in unitOfWork.YakitTip.ToList().DefaultIfEmpty() on motor.YakitID equals yakit._id
-                            select new Motorlar
-                            {   _id=motor._id,
-                                Adi = motor.MotorAD?? "Motor Adı bulunamadı.",
-                                Beygir=motor.MotorBeygir?? "Beygir sayısı bulunamadı.",
-                                YakitAD=yakit.YakitAD?? "Yakıt Adı bulunamadı.",
-                                CC=motor.MotorCC?? "CC değeri bulunamadı.",
-                                Silindir=motor.Silindir?? "Silindir sayısı bulunamadı.",    
-                            }).ToList();
-
-            //var araclar = (from arac in unitOfWork.Arac.ToList().DefaultIfEmpty()
-            //                 join marka in unitOfWork.Marka.ToList().DefaultIfEmpty() on arac.MarkaID equals marka._id
-            //                 join model in unitOfWork.Model.ToList().DefaultIfEmpty() on marka.ModelID equals model._id
-            //                 join vites in unitOfWork.Vites.ToList().DefaultIfEmpty() on model.VitesID equals vites._id
-            //                 join kapi in unitOfWork.KapiTip.ToList().DefaultIfEmpty() on model.KapiID equals kapi._id
-            //                 join motor in unitOfWork.MotorTip.ToList().DefaultIfEmpty() on model.MotorID equals motor._id
-            //                 join yakit in unitOfWork.YakitTip.ToList().DefaultIfEmpty() on motor.YakitID equals yakit._id
-            //                 select new Araclar
-            //                 {
-            //                     Adi = marka.MarkaAD ?? "Marka bilgisi bulunamadı." + " " + model.ModelAD ?? "Model bilgisi bulunamadı.",
-            //                     KapiTipi = kapi.KapiAD ?? "Kapı bilgisi bulunamadı.",
-            //                     Vites = vites.VitesAD == null ? "Vites ad bulunamadı" : vites.VitesAD + " " + vites.VitesSayisi == null ? "Vites sayısı bulunamadı." : vites.VitesSayisi + " vites",
-            //                     Yakip = yakit.YakitAD ?? "Yakıt bilgisi bulunamadı."
-            //                 }).ToList();
-
-
-
-           
-            return View(motorlar);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var motorlar = (from motor in unitOfWork.MotorTip.ToList().DefaultIfEmpty()
+                    join yakit in unitOfWork.YakitTip.ToList().DefaultIfEmpty() on motor.YakitID equals yakit._id
+                    select new Motorlar
+                    {
+                        _id = motor._id,
+                        Adi = motor.MotorAD ?? "Motor Adı bulunamadı.",
+                        Beygir = motor.MotorBeygir ?? "Beygir sayısı bulunamadı.",
+                        YakitAD = yakit.YakitAD ?? "Yakıt Adı bulunamadı.",
+                        CC = motor.MotorCC ?? "CC değeri bulunamadı.",
+                        Silindir = motor.Silindir ?? "Silindir sayısı bulunamadı.",
+                    }).ToList();
+                return View(motorlar);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpGet]
         [Route("create-motor")]
         public ActionResult CreateMotor()
         {
-            return View();
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                return View();
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpPost]
         [Route("save-motor")]
@@ -88,9 +85,17 @@ namespace AracTakip.Controllers
         }
         public ActionResult GetMotor(string id)
         {
-            var motor = unitOfWork.MotorTip.Find(x => x._id == id);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var motor = unitOfWork.MotorTip.Find(x => x._id == id);
 
-            return View("GetMotor", motor);
+                return View("GetMotor", motor);
+            }
+            else
+            {
+                return View("Error");
+            }
 
         }
         [Route("update-motor")]

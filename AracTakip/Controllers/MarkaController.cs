@@ -17,15 +17,31 @@ namespace AracTakip.Controllers
         [Route("get-all-marka")]
         public ActionResult Marka()
         {
-            var allMarka = unitOfWork.Marka.ToList();
-            return View(allMarka);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var allMarka = unitOfWork.Marka.ToList();
+                return View(allMarka);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpGet]
         [Route("create-marka")]
         public ActionResult CreateMarka()
         {
-            var models = unitOfWork.Model.ToList();
-            return View(models);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var models = unitOfWork.Model.ToList();
+                return View(models);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpPost]
         [Route("save-marka")]
@@ -47,10 +63,16 @@ namespace AracTakip.Controllers
         }
         public ActionResult GetMarka(string id)
         {
-            var marka = unitOfWork.Marka.Find(x => x._id == id);
-           
-                 
-            return View("GetMarka", marka);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                var marka = unitOfWork.Marka.Find(x => x._id == id);
+                return View("GetMarka", marka);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpPost]
         [Route("edit-marka")]

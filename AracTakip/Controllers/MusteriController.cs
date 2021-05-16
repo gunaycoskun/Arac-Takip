@@ -15,8 +15,16 @@ namespace AracTakip.Controllers
         [Route("get-all-musteri")]
         public ActionResult Musteri()
         {
-            var allMusteri = unitOfWork.Musteri.ToList();
-            return View(allMusteri);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser=="True")
+            {
+                var allMusteri = unitOfWork.Musteri.ToList();
+                return View(allMusteri); 
+            }
+            else
+            {
+                return View("Error");
+            }
         }
       
         public ActionResult DeleteMusteri(string id)
@@ -29,7 +37,16 @@ namespace AracTakip.Controllers
         [Route("add-musteri")]
         public ActionResult AddMusteri()
         {
-            return View();
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser == "True")
+            {
+                return View();
+            }
+            else
+            {
+
+                return View("Error");
+            }
         }
         [HttpPost]
         [Route("add-musteri-ajax")]
@@ -54,8 +71,16 @@ namespace AracTakip.Controllers
 
         public ActionResult GetMusteri(string id)
         {
-            var musteri = unitOfWork.Musteri.Find(x => x._id == id);
-            return View("GetMusteri",musteri);
+            var sessionUser = Session["User"] != null ? Session["User"].ToString() : "";
+            if (sessionUser=="True")
+            {
+                var musteri = unitOfWork.Musteri.Find(x => x._id == id);
+                return View("GetMusteri", musteri); 
+            }
+            else
+            {
+                return View("Error");
+            }
         }
         [HttpPost]
         [Route("update-musteri-ajax")]
