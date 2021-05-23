@@ -20,7 +20,7 @@
             url: "save-marka",
             dataType: "json",
             type: "POST",
-            data: { MarkaAD: $("#MarkaAD").val(), ModelID: $("#ModelTip").val() },
+            data: { MarkaAD: $("#MarkaAD").val() },
             success: function(data) {
                 window.location.replace("/get-all-marka");
             }

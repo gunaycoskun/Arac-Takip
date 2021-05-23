@@ -11,14 +11,12 @@ namespace AracTakip.Controllers
     public class HaritaController : Controller
     {
         UnitOfWork _unitOfWork = new UnitOfWork();
-       
- 
         [Route("harita-getir")]
         public ActionResult Harita(string plaka, string TC)
         {
             var musteri = _unitOfWork.Musteri.Find(x => x.MusteriTC == TC)._id;
-            var arac = _unitOfWork.Arac.Find(x => x.MusteriID == musteri)._id;
-            var cihaz = _unitOfWork.Cihaz.Find(x => x._id == arac && x.CihazAd == plaka);
+            var arac = _unitOfWork.Arac.Find(x => x.MusteriID == musteri&&x.Plaka==plaka)._id;
+            var cihaz = _unitOfWork.Cihaz.Find(x => x._id == arac);
             var XDeger = cihaz.XKonum.ToString();
             var YDeger = cihaz.YKonum.ToString();
     
