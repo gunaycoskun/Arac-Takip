@@ -45,15 +45,21 @@ namespace AracTakip.Controllers
         }
         [HttpPost]
         [Route("save-marka")]
-        public ActionResult SaveMarka(string MarkaAD, string ModelID)
+        public ActionResult SaveMarka(string MarkaAD)
         {
-            tbl_Marka marka = new tbl_Marka
+
+            if (!unitOfWork.Marka.Any(x => x.MarkaAD ==MarkaAD))
             {
-                MarkaAD = MarkaAD
-            };
-            unitOfWork.Marka.Add(marka);
-            unitOfWork.Save();
-            return Json("success");
+                tbl_Marka marka = new tbl_Marka
+                {
+                    MarkaAD = MarkaAD
+                };
+                unitOfWork.Marka.Add(marka);
+                unitOfWork.Save();
+                return Json("success"); 
+            }
+
+            return Json("");
         }
         public ActionResult DeleteMarka(string id)
         {
