@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Eselfware.Repository
+namespace Arac-Takip.Repository
 {
     public interface IRepository<T> : IDisposable where T : class
     {
